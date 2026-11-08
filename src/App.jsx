@@ -10,6 +10,7 @@ import Timeline from './pages/Timeline';
 import NeuronMap from './pages/NeuronMap';
 import Resources from './pages/Resources';
 import Gallery from './pages/Gallery';
+import NotFound from './pages/NotFound';
 
 // Component to handle route changes: scrolls to top
 function RouteHandler() {
@@ -36,8 +37,8 @@ export default function App() {
               <Route path="/map" element={<NeuronMap />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/resources" element={<Resources />} />
-              {/* Fallback route */}
-              <Route path="*" element={<Home />} />
+              {/* Fallback 404 route */}
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />

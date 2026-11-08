@@ -60,6 +60,8 @@ function computeRange(camY, h) {
   };
 }
 
+const DEFAULT_INITIAL_RANGE = computeRange(700 / 2 - STEP_Y / 2, 700);
+
 const ERA_ACCENTS = {
   ancient: '#f59e0b',
   medieval: '#10b981',
@@ -340,8 +342,7 @@ export default function Timeline() {
   const lastDispatchTimeRef = useRef(0);
 
   // Mounted-row range: the state itself lives inside <TapeTrack>
-  const rangeRef = useRef(computeRange(700 / 2 - STEP_Y / 2, 700));
-  const initialRangeRef = useRef(rangeRef.current);
+  const rangeRef = useRef(DEFAULT_INITIAL_RANGE);
   const setRangeFnRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -895,7 +896,7 @@ export default function Timeline() {
           <TapeTrack
             items={filteredItems}
             trackRef={tapeTrackRef}
-            initialRange={initialRangeRef.current}
+            initialRange={DEFAULT_INITIAL_RANGE}
             registerSetRange={registerSetRange}
             onRendered={reapplyActive}
           />
