@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Playfair Display', 'EB Garamond', Georgia, Cambria, 'Times New Roman', serif;
+  }
+  body {
+    font-family: 'Playfair Display', 'EB Garamond', Georgia, Cambria, 'Times New Roman', serif;
+    background-color: var(--theme-bg, #000000);
+    color: var(--theme-text, #ffffff);
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+}
+
+/* ==========================================================================
+   DYNAMIC THEME VARIABLES & BORDER SHAPE ENFORCEMENT
+   ========================================================================== */
+:root {
+  --theme-bg: #000000;
+  --theme-surface: #09090b;
+  --theme-surface-subtle: #18181b;
+  --theme-border: rgba(255, 255, 255, 0.15);
+  --theme-border-strong: rgba(255, 255, 255, 0.4);
+  --theme-text: #ffffff;
+  --theme-text-muted: rgba(255, 255, 255, 0.65);
+  --theme-text-subtle: rgba(255, 255, 255, 0.25);
+  --theme-accent: #ffffff;
+  --theme-accent-hover: #e4e4e7;
+  --theme-accent-text: #000000;
+  --theme-radius-box: 1.25rem;
+  --theme-radius-btn: 0.75rem;
+  --theme-radius-badge: 0.5rem;
+
+  /* DaisyUI radius tokens */
+  --rounded-box: var(--theme-radius-box);
+  --rounded-btn: var(--theme-radius-btn);
+  --rounded-badge: var(--theme-radius-badge);
+}
+
+/* Base Theme Mappings */
+[data-app-theme] {
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+}
+
+/* Background Overrides */
+[data-app-theme] .bg-black,
+[data-app-theme] .bg-black\/95,
+[data-app-theme] .bg-black\/90,
+[data-app-theme] .bg-black\/80 {
+  background-color: var(--theme-bg) !important;
+}
+
+[data-app-theme] .bg-zinc-950,
+[data-app-theme] .bg-zinc-950\/95,
+[data-app-theme] .bg-zinc-950\/90,
+[data-app-theme] .bg-zinc-950\/80,
+[data-app-theme] .bg-zinc-950\/50 {
+  background-color: var(--theme-surface) !important;
+}
+
+[data-app-theme] .bg-zinc-900,
+[data-app-theme] .bg-zinc-800,
+[data-app-theme] .bg-base-200 {
+  background-color: var(--theme-surface-subtle) !important;
+}
+
+/* Border Overrides */
+[data-app-theme] .border-white,
+[data-app-theme] .border-white\/50,
+[data-app-theme] .border-white\/40,
+[data-app-theme] .border-white\/30,
+[data-app-theme] .border-base-content\/40,
+[data-app-theme] .border-base-content\/30 {
+  border-color: var(--theme-border-strong) !important;
+}
+
+[data-app-theme] .border-white\/25,
+[data-app-theme] .border-white\/20,
+[data-app-theme] .border-white\/15,
+[data-app-theme] .border-white\/10,
+[data-app-theme] .border-base-content\/20,
+[data-app-theme] .border-base-content\/15,
+[data-app-theme] .border-base-content\/10 {
+  border-color: var(--theme-border) !important;
+}
+
+/* Text Color Overrides */
+[data-app-theme] .text-white,
+[data-app-theme] .text-white\/95,
+[data-app-theme] .text-white\/90,
+[data-app-theme] .text-white\/80 {
+  color: var(--theme-text) !important;
+}
+
+[data-app-theme] .text-white\/70,
+[data-app-theme] .text-white\/60,
+[data-app-theme] .text-white\/50,
+[data-app-theme] .text-white\/40,
+[data-app-theme] .text-base-content\/70,
+[data-app-theme] .text-base-content\/60,
+[data-app-theme] .text-base-content\/50 {
+  color: var(--theme-text-muted) !important;
+}
+
+[data-app-theme] .text-white\/30,
+[data-app-theme] .text-white\/20,
+[data-app-theme] .text-white\/15,
+[data-app-theme] .text-white\/10 {
+  color: var(--theme-text-subtle) !important;
+}
+
+/* Accent & Button Overrides */
+[data-app-theme] .bg-white.text-black,
+[data-app-theme] .btn-primary {
+  background-color: var(--theme-accent) !important;
+  color: var(--theme-accent-text) !important;
+  border-color: var(--theme-accent) !important;
+}
+
+[data-app-theme] .bg-white.text-black:hover,
+[data-app-theme] .btn-primary:hover {
+  background-color: var(--theme-accent-hover) !important;
+  color: var(--theme-accent-text) !important;
+}
+
+[data-app-theme] .text-primary {
+  color: var(--theme-accent) !important;
+}
+
+/* --------------------------------------------------------------------------
+   BORDER SHAPE DYNAMICS: All containers, buttons, cards adapt to theme shape
+   -------------------------------------------------------------------------- */
+[data-app-theme] .rounded-3xl,
+[data-app-theme] .rounded-2xl {
+  border-radius: var(--theme-radius-box) !important;
+}
+
+[data-app-theme] .rounded-xl,
+[data-app-theme] .btn,
+[data-app-theme] .join {
+  border-radius: var(--theme-radius-btn) !important;
+}
+
+[data-app-theme] .rounded-lg,
+[data-app-theme] .rounded-md,
+[data-app-theme] .badge {
+  border-radius: var(--theme-radius-badge) !important;
+}
+
+/* Cyberpunk hard razor-edge override (0px sharp everywhere) */
+[data-app-theme="cyberpunk"] .rounded-full,
+[data-app-theme="cyberpunk"] .rounded-3xl,
+[data-app-theme="cyberpunk"] .rounded-2xl,
+[data-app-theme="cyberpunk"] .rounded-xl,
+[data-app-theme="cyberpunk"] .rounded-lg,
+[data-app-theme="cyberpunk"] .rounded-md,
+[data-app-theme="cyberpunk"] .btn,
+[data-app-theme="cyberpunk"] .badge,
+[data-app-theme="cyberpunk"] .join,
+[data-app-theme="cyberpunk"] .card,
+[data-app-theme="cyberpunk"] input {
+  border-radius: 0px !important;
+}
+
+/* --------------------------------------------------------------------------
+   SPECIAL ADAPTATIONS FOR WHITE / BLACK (INVERTED MONOCHROME BLANC)
+   -------------------------------------------------------------------------- */
+[data-app-theme="white"] {
+  color-scheme: light;
+  --theme-text-subtle: rgba(0, 0, 0, 0.25);
+}
+
+/* Invert outlines, buttons, and badges on hover */
+[data-app-theme="white"] .hover\:bg-white:hover,
+[data-app-theme="white"] .btn-outline:hover {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+}
+
+[data-app-theme="white"] .hover\:text-black:hover {
+  color: #ffffff !important;
+}
+
+[data-app-theme="white"] .group:hover .group-hover\:bg-white {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+[data-app-theme="white"] .group:hover .group-hover\:text-black {
+  color: #ffffff !important;
+}
+
+[data-app-theme="white"] .group:hover .group-hover\:text-black\/60 {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Semi-transparent white elements turn to clean inverted tints */
+[data-app-theme="white"] .bg-white\/5 {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+[data-app-theme="white"] .bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+}
+[data-app-theme="white"] .bg-white\/15 {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+}
+[data-app-theme="white"] .bg-white\/20,
+[data-app-theme="white"] .bg-white\/25 {
+  background-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+[data-app-theme="white"] .hover\:bg-white\/10:hover {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+}
+[data-app-theme="white"] .hover\:bg-white\/15:hover {
+  background-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Modal backdrop in light theme */
+[data-app-theme="white"] .bg-black\/80 {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Timeline rail line in light theme */
+[data-app-theme="white"] .h-0\.5.bg-white\/20 {
+  background-color: rgba(0, 0, 0, 0.22) !important;
+}
+
+/* Input placeholder and selections */
+[data-app-theme="white"] input::placeholder {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+[data-app-theme="white"] .selection\:bg-white {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
