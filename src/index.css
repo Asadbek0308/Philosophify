@@ -490,3 +490,25 @@ a svg {
   animation: floatGentle 2.5s ease-in-out infinite;
 }
 
+/* ==========================================================================
+   NEURON MAP: LABEL CLUTTER HALO & ZOOMED-OUT FILTERING
+   ========================================================================== */
+.node-label {
+  paint-order: stroke fill;
+  stroke: var(--theme-bg, #000000);
+  stroke-width: 3.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  user-select: none;
+  pointer-events: none;
+}
+
+[data-app-theme="white"] .node-label {
+  stroke: #ffffff !important;
+}
+
+.zoomed-out .lbl-minor {
+  display: none !important;
+}
+
+

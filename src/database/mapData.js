@@ -1,6 +1,6 @@
 // Interconnected "Second Brain" Knowledge Graph Database
-// Comprehensive Interconnected Web of 179 Thinkers, Philosophical Ideas, and Historical Places
-// Enriched with complete scholarly, detailed summaries and multi-tag categorizations
+// Comprehensive Graph of 179 Thinkers, Philosophical Ideas, and Historical Places
+// Enriched with scholarly summaries, multi-tag categorization, and validated relational links
 
 export const GRAPH_NODES = [
   {
@@ -20,11 +20,7 @@ export const GRAPH_NODES = [
       "lyceum",
       "greek",
       "ancient"
-    ],
-    "x": 301.7,
-    "y": 319.6,
-    "connectionsCount": 26,
-    "radius": 16
+    ]
   },
   {
     "id": "place-paris",
@@ -42,11 +38,7 @@ export const GRAPH_NODES = [
       "salons",
       "cafes",
       "french"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 19,
-    "radius": 8.5
+    ]
   },
   {
     "id": "place-ancient-china",
@@ -66,11 +58,7 @@ export const GRAPH_NODES = [
       "ancient",
       "central",
       "plains"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 12,
-    "radius": 8.5
+    ]
   },
   {
     "id": "place-rome",
@@ -89,11 +77,7 @@ export const GRAPH_NODES = [
       "roman",
       "italian",
       "ancient"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 10,
-    "radius": 8.5
+    ]
   },
   {
     "id": "place-oxford-cambridge",
@@ -101,7 +85,7 @@ export const GRAPH_NODES = [
     "category": "place",
     "era": "Early Modern & Analytic Era",
     "summary": "Oxford and Cambridge, the ancient collegiate universities of England, have served for eight centuries as the paramount institutional citadel of British philosophy. They nurtured medieval scholastic luminaries like Duns Scotus and William of Ockham, laid the foundations of empirical science through Francis Bacon and John Locke, and refined utilitarian ethics through Jeremy Bentham and John Stuart Mill. In the 20th century, Cambridge became the birthplace of modern Analytic Philosophy through Bertrand Russell, G.E. Moore, and Ludwig Wittgenstein, establishing symbolic logic and ordinary language analysis as primary tools.",
-    "quote": "“All knowledge begins with experience, but not all knowledge arises from experience.” — Locke / Russell",
+    "quote": "“No man’s knowledge here can go beyond his experience.” — John Locke, An Essay Concerning Human Understanding (1689)",
     "tags": [
       "oxford",
       "cambridge",
@@ -111,11 +95,7 @@ export const GRAPH_NODES = [
       "logic",
       "utilitarianism",
       "british"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 8,
-    "radius": 8.5
+    ]
   },
   {
     "id": "idea-analytic",
@@ -134,11 +114,7 @@ export const GRAPH_NODES = [
       "vienna",
       "epistemology",
       "philosophy"
-    ],
-    "x": 1139.6,
-    "y": 50,
-    "connectionsCount": 8,
-    "radius": 8.5
+    ]
   },
   {
     "id": "place-ancient-india",
@@ -159,11 +135,7 @@ export const GRAPH_NODES = [
       "ancient",
       "varanasi",
       "magadha"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 7,
-    "radius": 8.5
+    ]
   },
   {
     "id": "place-boston-harvard",
@@ -181,11 +153,7 @@ export const GRAPH_NODES = [
       "emerson",
       "american",
       "england"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 7,
-    "radius": 8.5
+    ]
   },
   {
     "id": "idea-existentialism",
@@ -203,11 +171,7 @@ export const GRAPH_NODES = [
       "paris",
       "modern",
       "french"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 6,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-kant",
@@ -230,11 +194,7 @@ export const GRAPH_NODES = [
       "germany",
       "prussia",
       "enlightenment"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 6,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-hegel",
@@ -254,11 +214,7 @@ export const GRAPH_NODES = [
       "wilhelm",
       "friedrich",
       "hegel"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 6,
-    "radius": 8.5
+    ]
   },
   {
     "id": "place-baghdad",
@@ -277,11 +233,7 @@ export const GRAPH_NODES = [
       "islamic",
       "house",
       "wisdom"
-    ],
-    "x": 1036.6,
-    "y": 370.2,
-    "connectionsCount": 5,
-    "radius": 8.5
+    ]
   },
   {
     "id": "idea-empiricism",
@@ -300,11 +252,7 @@ export const GRAPH_NODES = [
       "tabula-rasa",
       "british",
       "epistemology"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 5,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-marx",
@@ -323,11 +271,7 @@ export const GRAPH_NODES = [
       "politics",
       "karl",
       "marx"
-    ],
-    "x": 60,
-    "y": 779.4,
-    "connectionsCount": 5,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-nietzsche",
@@ -348,11 +292,7 @@ export const GRAPH_NODES = [
       "germany",
       "amor-fati",
       "ubermensch"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 5,
-    "radius": 8.5
+    ]
   },
   {
     "id": "place-weimar-jena",
@@ -370,11 +310,7 @@ export const GRAPH_NODES = [
       "fichte",
       "schelling",
       "german"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 4,
-    "radius": 8.5
+    ]
   },
   {
     "id": "place-frankfurt",
@@ -391,11 +327,7 @@ export const GRAPH_NODES = [
       "adorno",
       "habermas",
       "german"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 4,
-    "radius": 8.5
+    ]
   },
   {
     "id": "place-vienna",
@@ -412,11 +344,7 @@ export const GRAPH_NODES = [
       "analytic",
       "modernism",
       "austrian"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 4,
-    "radius": 8.5
+    ]
   },
   {
     "id": "idea-rationalism",
@@ -433,11 +361,7 @@ export const GRAPH_NODES = [
       "descartes",
       "spinoza",
       "leibniz"
-    ],
-    "x": 577.3,
-    "y": 116.8,
-    "connectionsCount": 4,
-    "radius": 8.5
+    ]
   },
   {
     "id": "idea-german-idealism",
@@ -456,11 +380,7 @@ export const GRAPH_NODES = [
       "idealism",
       "german",
       "metaphysics"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 4,
-    "radius": 8.5
+    ]
   },
   {
     "id": "idea-phenomenology",
@@ -476,11 +396,7 @@ export const GRAPH_NODES = [
       "husserl",
       "heidegger",
       "experience"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 4,
-    "radius": 8.5
+    ]
   },
   {
     "id": "idea-postmodernism",
@@ -498,11 +414,7 @@ export const GRAPH_NODES = [
       "derrida",
       "paris",
       "french"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 4,
-    "radius": 8.5
+    ]
   },
   {
     "id": "idea-enlightenment",
@@ -520,11 +432,7 @@ export const GRAPH_NODES = [
       "rousseau",
       "rights",
       "french"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 4,
-    "radius": 8.5
+    ]
   },
   {
     "id": "idea-humanism",
@@ -540,11 +448,7 @@ export const GRAPH_NODES = [
       "dignity",
       "individual",
       "classical"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 4,
-    "radius": 8.5
+    ]
   },
   {
     "id": "idea-scholasticism",
@@ -560,11 +464,7 @@ export const GRAPH_NODES = [
       "anselm",
       "paris",
       "theology"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 4,
-    "radius": 8.5
+    ]
   },
   {
     "id": "idea-social-contract",
@@ -584,11 +484,7 @@ export const GRAPH_NODES = [
       "social",
       "contract",
       "theory"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 4,
-    "radius": 8.5
+    ]
   },
   {
     "id": "idea-feminist-philosophy",
@@ -607,11 +503,7 @@ export const GRAPH_NODES = [
       "feminist",
       "philosophy",
       "theory"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 4,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-thomas-aquinas",
@@ -628,11 +520,7 @@ export const GRAPH_NODES = [
       "italian",
       "thomas",
       "aquinas"
-    ],
-    "x": 702.6,
-    "y": 552.9,
-    "connectionsCount": 4,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-descartes",
@@ -652,11 +540,7 @@ export const GRAPH_NODES = [
       "metaphysics",
       "rené",
       "descartes"
-    ],
-    "x": 470.3,
-    "y": 498.6,
-    "connectionsCount": 4,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-beauvoir",
@@ -674,11 +558,7 @@ export const GRAPH_NODES = [
       "ethics",
       "simone",
       "beauvoir"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 4,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-camus",
@@ -696,11 +576,7 @@ export const GRAPH_NODES = [
       "ethics",
       "albert",
       "camus"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 4,
-    "radius": 8.5
+    ]
   },
   {
     "id": "place-alexandria",
@@ -716,11 +592,7 @@ export const GRAPH_NODES = [
       "library",
       "syncretism",
       "ancient"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "place-cordoba",
@@ -738,11 +610,7 @@ export const GRAPH_NODES = [
       "islamic-philosophy",
       "islamic",
       "córdoba"
-    ],
-    "x": 810.8,
-    "y": 557.3,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "place-florence",
@@ -759,11 +627,7 @@ export const GRAPH_NODES = [
       "italy",
       "civic-virtue",
       "italian"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "idea-buddhism",
@@ -781,11 +645,7 @@ export const GRAPH_NODES = [
       "india",
       "meditation",
       "indian"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "idea-pragmatism",
@@ -804,11 +664,7 @@ export const GRAPH_NODES = [
       "experience",
       "american",
       "epistemology"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "idea-critical-theory",
@@ -828,11 +684,7 @@ export const GRAPH_NODES = [
       "politics",
       "critical",
       "theory"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-montaigne",
@@ -849,11 +701,7 @@ export const GRAPH_NODES = [
       "french",
       "michel",
       "montaigne"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-spinoza",
@@ -875,11 +723,7 @@ export const GRAPH_NODES = [
       "mind",
       "baruch",
       "spinoza"
-    ],
-    "x": 468.9,
-    "y": 206.3,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-locke",
@@ -899,11 +743,7 @@ export const GRAPH_NODES = [
       "mind",
       "john",
       "locke"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-hume",
@@ -914,7 +754,6 @@ export const GRAPH_NODES = [
     "quote": "“Reason is the slave of the passions.”",
     "tags": [
       "edinburgh",
-      "oxford-cambridge",
       "empiricism",
       "skepticism",
       "british",
@@ -923,11 +762,7 @@ export const GRAPH_NODES = [
       "mind",
       "david",
       "hume"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-rousseau",
@@ -946,11 +781,7 @@ export const GRAPH_NODES = [
       "politics",
       "jean-jacques",
       "rousseau"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-schopenhauer",
@@ -968,11 +799,7 @@ export const GRAPH_NODES = [
       "metaphysics",
       "arthur",
       "schopenhauer"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-kierkegaard",
@@ -989,11 +816,7 @@ export const GRAPH_NODES = [
       "danish",
       "søren",
       "kierkegaard"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-heidegger",
@@ -1011,11 +834,7 @@ export const GRAPH_NODES = [
       "metaphysics",
       "martin",
       "heidegger"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-sartre",
@@ -1033,11 +852,7 @@ export const GRAPH_NODES = [
       "ethics",
       "jean-paul",
       "sartre"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-foucault",
@@ -1055,11 +870,7 @@ export const GRAPH_NODES = [
       "politics",
       "michel",
       "foucault"
-    ],
-    "x": 459.3,
-    "y": 780,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "thinker-wittgenstein",
@@ -1077,11 +888,7 @@ export const GRAPH_NODES = [
       "epistemology",
       "ludwig",
       "wittgenstein"
-    ],
-    "x": 846.3,
-    "y": 50,
-    "connectionsCount": 3,
-    "radius": 8.5
+    ]
   },
   {
     "id": "place-amsterdam",
@@ -1099,11 +906,7 @@ export const GRAPH_NODES = [
       "rationalism",
       "dutch",
       "countries"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "place-edinburgh",
@@ -1122,11 +925,7 @@ export const GRAPH_NODES = [
       "british",
       "scottish",
       "enlightenment"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "place-berlin",
@@ -1143,11 +942,7 @@ export const GRAPH_NODES = [
       "dialectics",
       "idealism",
       "german"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "place-heidelberg",
@@ -1164,11 +959,7 @@ export const GRAPH_NODES = [
       "jaspers",
       "existentialism",
       "german"
-    ],
-    "x": 773.1,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "place-kyoto",
@@ -1185,11 +976,7 @@ export const GRAPH_NODES = [
       "nothingness",
       "eastern-philosophy",
       "japanese"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "place-jerusalem",
@@ -1206,11 +993,7 @@ export const GRAPH_NODES = [
       "dialogue",
       "judaism",
       "jewish"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "place-nalanda",
@@ -1227,11 +1010,7 @@ export const GRAPH_NODES = [
       "ancient-university",
       "indian",
       "ancient"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-modernism",
@@ -1247,11 +1026,7 @@ export const GRAPH_NODES = [
       "critique",
       "reason",
       "technology"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-stoicism",
@@ -1270,11 +1045,7 @@ export const GRAPH_NODES = [
       "epictetus",
       "marcus-aurelius",
       "greek"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-platonism",
@@ -1292,11 +1063,7 @@ export const GRAPH_NODES = [
       "greece",
       "republic",
       "greek"
-    ],
-    "x": 438.8,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-aristotelianism",
@@ -1316,11 +1083,7 @@ export const GRAPH_NODES = [
       "greek",
       "metaphysics",
       "aristotelianism"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-nihilism",
@@ -1337,11 +1100,7 @@ export const GRAPH_NODES = [
       "existentialism",
       "modernism",
       "void"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-utilitarianism",
@@ -1359,11 +1118,7 @@ export const GRAPH_NODES = [
       "mill",
       "oxford",
       "british"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-materialism",
@@ -1381,11 +1136,7 @@ export const GRAPH_NODES = [
       "naturalism",
       "physics",
       "metaphysics"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-skepticism",
@@ -1404,11 +1155,7 @@ export const GRAPH_NODES = [
       "greek",
       "epistemology",
       "pyrrhonian"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-epicureanism",
@@ -1425,11 +1172,7 @@ export const GRAPH_NODES = [
       "garden",
       "friendship",
       "greek"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-transcendentalism",
@@ -1446,11 +1189,7 @@ export const GRAPH_NODES = [
       "thoreau",
       "boston",
       "american"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-philosophy-of-history",
@@ -1467,11 +1206,7 @@ export const GRAPH_NODES = [
       "asabiyyah",
       "progress",
       "philosophy"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-philosophy-of-mind",
@@ -1488,11 +1223,7 @@ export const GRAPH_NODES = [
       "chalmers",
       "nagel",
       "philosophy"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-panpsychism",
@@ -1511,11 +1242,7 @@ export const GRAPH_NODES = [
       "metaphysics",
       "mind",
       "philosophy"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-political-realism",
@@ -1534,11 +1261,7 @@ export const GRAPH_NODES = [
       "political",
       "raison",
       "d’état"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-plotinus",
@@ -1556,11 +1279,7 @@ export const GRAPH_NODES = [
       "metaphysics",
       "ancient",
       "plotinus"
-    ],
-    "x": 719.5,
-    "y": 419.4,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-philo",
@@ -1568,7 +1287,7 @@ export const GRAPH_NODES = [
     "category": "thinker",
     "era": "c. 20 BC - 50 AD",
     "summary": "Philo of Alexandria was a prominent Hellenistic Jewish philosopher who achieved a monumental synthesis between the Hebrew Scriptures and Greek philosophical traditions, particularly Platonism and Stoicism. Pioneering the allegorical method of biblical interpretation, Philo identified the divine Logos as the supreme intelligible archetype and mediator through which God creates and governs the cosmos, deeply influencing early Christian theology and the Gospel of John.",
-    "quote": "“Be kind, for everyone you meet is fighting a great battle.”",
+    "quote": "“The soul is a dwelling-place of God, a holy temple.” — Philo of Alexandria, De Somniis",
     "tags": [
       "alexandria",
       "jerusalem",
@@ -1577,11 +1296,7 @@ export const GRAPH_NODES = [
       "jewish",
       "ancient",
       "philo"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-nishida",
@@ -1598,11 +1313,7 @@ export const GRAPH_NODES = [
       "japanese",
       "nishida",
       "kitarō"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-nagarjuna",
@@ -1620,11 +1331,7 @@ export const GRAPH_NODES = [
       "epistemology",
       "ancient",
       "nagarjuna"
-    ],
-    "x": 898.4,
-    "y": 349,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-vasubandhu",
@@ -1640,11 +1347,7 @@ export const GRAPH_NODES = [
       "yogacara",
       "indian",
       "vasubandhu"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-ibn-rushd",
@@ -1652,7 +1355,7 @@ export const GRAPH_NODES = [
     "category": "thinker",
     "era": "1126 - 1198 AD",
     "summary": "Ibn Rushd (Averroes) was the preeminent Islamic philosopher and jurist of Córdoba who composed the masterly Great Commentaries on Aristotle, earning him the title of “The Commentator” in Dante’s Divine Comedy and Aquinas’s works. In The Incoherence of the Incoherence and his Decisive Treatise, Ibn Rushd defended philosophy against Al-Ghazali, proving that the study of rational philosophy is not only permitted but legally mandated by scripture.",
-    "quote": "“Ignorance leads to fear, fear leads to hate, hate leads to violence.”",
+    "quote": "“Truth does not oppose truth, but accords with it and bears witness to it.” — Ibn Rushd, Fasl al-Maqal (The Decisive Treatise)",
     "tags": [
       "cordoba",
       "baghdad",
@@ -1661,11 +1364,7 @@ export const GRAPH_NODES = [
       "islamic",
       "rushd",
       "averroes"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-maimonides",
@@ -1683,11 +1382,7 @@ export const GRAPH_NODES = [
       "moses",
       "maimonides",
       "rambam"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-ibn-khaldun",
@@ -1703,11 +1398,7 @@ export const GRAPH_NODES = [
       "asabiyyah",
       "islamic",
       "khaldun"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-duns-scotus",
@@ -1723,11 +1414,7 @@ export const GRAPH_NODES = [
       "john",
       "duns",
       "scotus"
-    ],
-    "x": 576.9,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-ockham",
@@ -1742,11 +1429,7 @@ export const GRAPH_NODES = [
       "nominalism",
       "william",
       "ockham"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-machiavelli",
@@ -1763,11 +1446,7 @@ export const GRAPH_NODES = [
       "italian",
       "niccolò",
       "machiavelli"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-pico-mirandola",
@@ -1785,11 +1464,7 @@ export const GRAPH_NODES = [
       "pico",
       "della",
       "mirandola"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-bacon",
@@ -1806,11 +1481,7 @@ export const GRAPH_NODES = [
       "british",
       "francis",
       "bacon"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-hobbes",
@@ -1828,11 +1499,7 @@ export const GRAPH_NODES = [
       "politics",
       "thomas",
       "hobbes"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-pascal",
@@ -1849,11 +1516,7 @@ export const GRAPH_NODES = [
       "french",
       "blaise",
       "pascal"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-leibniz",
@@ -1873,11 +1536,7 @@ export const GRAPH_NODES = [
       "gottfried",
       "wilhelm",
       "leibniz"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-berkeley",
@@ -1887,7 +1546,6 @@ export const GRAPH_NODES = [
     "summary": "George Berkeley, Bishop of Cloyne, was the Anglo-Irish empiricist philosopher who defended immaterialism (idealism) in A Treatise Concerning the Principles of Human Knowledge. Taking empiricism to its logical conclusion, Berkeley argued that material substance does not exist independent of perception, formulating the immortal maxim Esse est percipi (To be is to be perceived), with God acting as the eternal mind sustaining reality.",
     "quote": "“To be is to be perceived (Esse est percipi).”",
     "tags": [
-      "oxford-cambridge",
       "empiricism",
       "idealism",
       "mind",
@@ -1895,12 +1553,10 @@ export const GRAPH_NODES = [
       "epistemology",
       "metaphysics",
       "george",
-      "berkeley"
-    ],
-    "x": 60,
-    "y": 779.8,
-    "connectionsCount": 2,
-    "radius": 4.5
+      "berkeley",
+      "dublin",
+      "ireland"
+    ]
   },
   {
     "id": "thinker-voltaire",
@@ -1916,11 +1572,7 @@ export const GRAPH_NODES = [
       "free-speech",
       "french",
       "voltaire"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-diderot",
@@ -1937,11 +1589,7 @@ export const GRAPH_NODES = [
       "french",
       "denis",
       "diderot"
-    ],
-    "x": 532.8,
-    "y": 386.5,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-wollstonecraft",
@@ -1951,18 +1599,14 @@ export const GRAPH_NODES = [
     "summary": "Mary Wollstonecraft was the groundbreaking English philosopher and pioneer of modern feminist thought whose A Vindication of the Rights of Woman (1792) applied Enlightenment principles of natural rights and reason to women. Rejecting the prevailing view that women are naturally frivolous and emotional, Wollstonecraft argued that women’s perceived shortcomings were the direct consequence of systematic educational denial, demanding equal education and civic rights.",
     "quote": "“I do not wish women to have power over men; but over themselves.”",
     "tags": [
-      "oxford-cambridge",
       "feminism",
       "rights",
       "enlightenment",
       "british",
       "mary",
-      "wollstonecraft"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+      "wollstonecraft",
+      "london"
+    ]
   },
   {
     "id": "thinker-fichte",
@@ -1980,11 +1624,7 @@ export const GRAPH_NODES = [
       "johann",
       "gottlieb",
       "fichte"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-schelling",
@@ -2003,11 +1643,7 @@ export const GRAPH_NODES = [
       "wilhelm",
       "joseph",
       "schelling"
-    ],
-    "x": 778.5,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-mill",
@@ -2027,11 +1663,7 @@ export const GRAPH_NODES = [
       "john",
       "stuart",
       "mill"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-emerson",
@@ -2048,11 +1680,7 @@ export const GRAPH_NODES = [
       "ralph",
       "waldo",
       "emerson"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-thoreau",
@@ -2069,11 +1697,7 @@ export const GRAPH_NODES = [
       "henry",
       "david",
       "thoreau"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-peirce",
@@ -2091,11 +1715,7 @@ export const GRAPH_NODES = [
       "charles",
       "sanders",
       "peirce"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-james",
@@ -2103,7 +1723,7 @@ export const GRAPH_NODES = [
     "category": "thinker",
     "era": "1842 - 1910 AD",
     "summary": "William James was the celebrated Harvard psychologist and philosopher who popularized Pragmatism and transformed moral psychology. In The Principles of Psychology, he introduced the concept of the “stream of consciousness,” while in The Will to Believe and Pragmatism, he defended the right to adopt belief on passion and evaluated truth by its “cash-value” in experience. In Varieties of Religious Experience, he pioneered the empirical study of mystical states.",
-    "quote": "“The greatest discovery of my generation is that a human being can alter his life by altering his attitudes.”",
+    "quote": "“The truth of an idea is not a stagnant property inherent in it. Truth happens to an idea.” — William James, Pragmatism (1907)",
     "tags": [
       "boston-harvard",
       "pragmatism",
@@ -2113,11 +1733,7 @@ export const GRAPH_NODES = [
       "mind",
       "william",
       "james"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-dewey",
@@ -2133,11 +1749,7 @@ export const GRAPH_NODES = [
       "american",
       "john",
       "dewey"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-husserl",
@@ -2157,11 +1769,7 @@ export const GRAPH_NODES = [
       "mind",
       "edmund",
       "husserl"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-gadamer",
@@ -2178,11 +1786,7 @@ export const GRAPH_NODES = [
       "german",
       "hans-georg",
       "gadamer"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-merleau-ponty",
@@ -2201,11 +1805,7 @@ export const GRAPH_NODES = [
       "existentialism",
       "maurice",
       "merleau-ponty"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-horkheimer",
@@ -2220,11 +1820,7 @@ export const GRAPH_NODES = [
       "enlightenment",
       "german",
       "horkheimer"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-adorno",
@@ -2240,11 +1836,7 @@ export const GRAPH_NODES = [
       "german",
       "theodor",
       "adorno"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-habermas",
@@ -2261,11 +1853,7 @@ export const GRAPH_NODES = [
       "politics",
       "jürgen",
       "habermas"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-levinas",
@@ -2283,11 +1871,7 @@ export const GRAPH_NODES = [
       "jewish",
       "emmanuel",
       "levinas"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-baudrillard",
@@ -2304,11 +1888,7 @@ export const GRAPH_NODES = [
       "french",
       "jean",
       "baudrillard"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-derrida",
@@ -2326,11 +1906,7 @@ export const GRAPH_NODES = [
       "jewish",
       "jacques",
       "derrida"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-deleuze",
@@ -2347,11 +1923,7 @@ export const GRAPH_NODES = [
       "french",
       "gilles",
       "deleuze"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-russell",
@@ -2369,11 +1941,7 @@ export const GRAPH_NODES = [
       "epistemology",
       "bertrand",
       "russell"
-    ],
-    "x": 747.3,
-    "y": 174.9,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-popper",
@@ -2391,11 +1959,7 @@ export const GRAPH_NODES = [
       "epistemology",
       "karl",
       "popper"
-    ],
-    "x": 803.7,
-    "y": 283.1,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-quine",
@@ -2413,11 +1977,7 @@ export const GRAPH_NODES = [
       "willard",
       "orman",
       "quine"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-rawls",
@@ -2435,11 +1995,7 @@ export const GRAPH_NODES = [
       "politics",
       "john",
       "rawls"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-nagel",
@@ -2455,11 +2011,7 @@ export const GRAPH_NODES = [
       "american",
       "thomas",
       "nagel"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-chalmers",
@@ -2476,11 +2028,7 @@ export const GRAPH_NODES = [
       "american",
       "david",
       "chalmers"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-butler",
@@ -2497,11 +2045,7 @@ export const GRAPH_NODES = [
       "american",
       "judith",
       "butler"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 2,
-    "radius": 4.5
+    ]
   },
   {
     "id": "place-konigsberg",
@@ -2519,11 +2063,7 @@ export const GRAPH_NODES = [
       "enlightenment",
       "german",
       "königsberg"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "place-copenhagen",
@@ -2540,11 +2080,7 @@ export const GRAPH_NODES = [
       "angst",
       "faith",
       "danish"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "place-geneva",
@@ -2560,11 +2096,7 @@ export const GRAPH_NODES = [
       "social-contract",
       "liberty",
       "swiss"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "place-fez",
@@ -2581,11 +2113,7 @@ export const GRAPH_NODES = [
       "sociology",
       "north-africa",
       "islamic"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-daoism",
@@ -2603,11 +2131,7 @@ export const GRAPH_NODES = [
       "harmony",
       "yin-yang",
       "chinese"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-confucianism",
@@ -2625,11 +2149,7 @@ export const GRAPH_NODES = [
       "virtue",
       "filial-piety",
       "chinese"
-    ],
-    "x": 695.4,
-    "y": 698.7,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-cynicism",
@@ -2647,11 +2167,7 @@ export const GRAPH_NODES = [
       "greece",
       "greek",
       "natural"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-hermeneutics",
@@ -2667,11 +2183,7 @@ export const GRAPH_NODES = [
       "language",
       "heidelberg",
       "understanding"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-legalism",
@@ -2688,11 +2200,7 @@ export const GRAPH_NODES = [
       "law",
       "warring-states",
       "chinese"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-advaita-vedanta",
@@ -2709,11 +2217,7 @@ export const GRAPH_NODES = [
       "atman",
       "india",
       "indian"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-absurdism",
@@ -2730,11 +2234,7 @@ export const GRAPH_NODES = [
       "existentialism",
       "paris",
       "defiant"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-virtue-ethics",
@@ -2751,11 +2251,7 @@ export const GRAPH_NODES = [
       "phronesis",
       "ethics",
       "virtue"
-    ],
-    "x": 488.7,
-    "y": 624.8,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-deontology",
@@ -2772,11 +2268,7 @@ export const GRAPH_NODES = [
       "ethics",
       "deontological",
       "moral"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-ordinary-language",
@@ -2794,11 +2286,7 @@ export const GRAPH_NODES = [
       "ordinary",
       "language",
       "philosophy"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-thales",
@@ -2819,11 +2307,7 @@ export const GRAPH_NODES = [
       "ancient",
       "thales",
       "miletus"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-anaximander",
@@ -2841,11 +2325,7 @@ export const GRAPH_NODES = [
       "metaphysics",
       "ancient",
       "anaximander"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-pythagoras",
@@ -2853,7 +2333,7 @@ export const GRAPH_NODES = [
     "category": "thinker",
     "era": "c. 570 - 495 BC",
     "summary": "Pythagoras of Samos was an enigmatic Presocratic philosopher, mystic, and mathematician who founded a famous brotherhood in Croton, Southern Italy. He posited that number and proportional harmony constitute the ultimate metaphysical essence of the entire cosmos, discovering the mathematical relationships underlying musical acoustics and geometric proofs. Pythagorean philosophy also integrated mystical doctrines of the immortality and transmigration of the soul (metempsychosis), exerting an immense, lasting influence on Plato’s metaphysics.",
-    "quote": "“Number rules the universe.”",
+    "quote": "“All things in the cosmos are ordered in accordance with number.” — Pythagorean doctrine (Aristotle, Metaphysics)",
     "tags": [
       "greece",
       "mathematics",
@@ -2863,11 +2343,7 @@ export const GRAPH_NODES = [
       "metaphysics",
       "ancient",
       "pythagoras"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-heraclitus",
@@ -2887,11 +2363,7 @@ export const GRAPH_NODES = [
       "mind",
       "ancient",
       "heraclitus"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-parmenides",
@@ -2910,11 +2382,7 @@ export const GRAPH_NODES = [
       "metaphysics",
       "ancient",
       "parmenides"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-democritus",
@@ -2932,11 +2400,7 @@ export const GRAPH_NODES = [
       "metaphysics",
       "ancient",
       "democritus"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-socrates",
@@ -2955,11 +2419,7 @@ export const GRAPH_NODES = [
       "epistemology",
       "ancient",
       "socrates"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-plato",
@@ -2981,11 +2441,7 @@ export const GRAPH_NODES = [
       "politics",
       "ancient",
       "plato"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-aristotle",
@@ -3008,11 +2464,7 @@ export const GRAPH_NODES = [
       "mind",
       "ancient",
       "aristotle"
-    ],
-    "x": 60,
-    "y": 399.1,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-diogenes",
@@ -3031,11 +2483,7 @@ export const GRAPH_NODES = [
       "ancient",
       "diogenes",
       "sinope"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-antisthenes",
@@ -3053,11 +2501,7 @@ export const GRAPH_NODES = [
       "ethics",
       "ancient",
       "antisthenes"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-pyrrho",
@@ -3075,11 +2519,7 @@ export const GRAPH_NODES = [
       "ancient",
       "pyrrho",
       "elis"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-epicurus",
@@ -3097,11 +2537,7 @@ export const GRAPH_NODES = [
       "ethics",
       "ancient",
       "epicurus"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-zeno-citium",
@@ -3120,11 +2556,7 @@ export const GRAPH_NODES = [
       "ancient",
       "zeno",
       "citium"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-chrysippus",
@@ -3141,11 +2573,7 @@ export const GRAPH_NODES = [
       "greek",
       "ancient",
       "chrysippus"
-    ],
-    "x": 606.4,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-thucydides",
@@ -3163,11 +2591,7 @@ export const GRAPH_NODES = [
       "politics",
       "ancient",
       "thucydides"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-cicero",
@@ -3188,11 +2612,7 @@ export const GRAPH_NODES = [
       "marcus",
       "tullius",
       "cicero"
-    ],
-    "x": 706.9,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-lucretius",
@@ -3209,11 +2629,7 @@ export const GRAPH_NODES = [
       "roman",
       "ancient",
       "lucretius"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-seneca",
@@ -3232,11 +2648,7 @@ export const GRAPH_NODES = [
       "ancient",
       "seneca",
       "younger"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-epictetus",
@@ -3255,11 +2667,7 @@ export const GRAPH_NODES = [
       "ethics",
       "ancient",
       "epictetus"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-marcus-aurelius",
@@ -3278,11 +2686,7 @@ export const GRAPH_NODES = [
       "ancient",
       "marcus",
       "aurelius"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-sextus-empiricus",
@@ -3301,11 +2705,7 @@ export const GRAPH_NODES = [
       "ancient",
       "sextus",
       "empiricus"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-hypatia",
@@ -3313,7 +2713,7 @@ export const GRAPH_NODES = [
     "category": "thinker",
     "era": "c. 360 - 415 AD",
     "summary": "Hypatia of Alexandria was a renowned Neoplatonist philosopher, mathematician, and astronomer who served as the leading intellectual of Late Antique Alexandria, teaching both pagan and Christian students. Renowned for her commentaries on Diophantus’s algebra, Apollonius’s conics, and Ptolemy’s astronomy, Hypatia embodied the classical union of rigorous mathematical science and philosophical contemplation of the divine One, before her tragic murder in 415 AD.",
-    "quote": "“Reserve your right to think, for even to think wrongly is better than not to think at all.”",
+    "quote": "“Fables should be taught as fables, myths as myths, and miracles as poetic fantasies.” — Hypatia of Alexandria (recorded by Synesius)",
     "tags": [
       "alexandria",
       "neoplatonism",
@@ -3322,11 +2722,7 @@ export const GRAPH_NODES = [
       "greek",
       "ancient",
       "hypatia"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-augustine",
@@ -3345,11 +2741,7 @@ export const GRAPH_NODES = [
       "ancient",
       "augustine",
       "hippo"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-laozi",
@@ -3366,11 +2758,7 @@ export const GRAPH_NODES = [
       "chinese",
       "ancient",
       "laozi"
-    ],
-    "x": 664.1,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-confucius",
@@ -3391,11 +2779,7 @@ export const GRAPH_NODES = [
       "confucius",
       "kong",
       "fuzi"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-mozi",
@@ -3412,11 +2796,7 @@ export const GRAPH_NODES = [
       "chinese",
       "ancient",
       "mozi"
-    ],
-    "x": 623.8,
-    "y": 254,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-zhuangzi",
@@ -3434,11 +2814,7 @@ export const GRAPH_NODES = [
       "ancient",
       "zhuangzi",
       "chuang"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-mencius",
@@ -3457,11 +2833,7 @@ export const GRAPH_NODES = [
       "ancient",
       "mencius",
       "mengzi"
-    ],
-    "x": 1140,
-    "y": 420.7,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-xunzi",
@@ -3479,11 +2851,7 @@ export const GRAPH_NODES = [
       "ancient",
       "xunzi",
       "master"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-han-feizi",
@@ -3501,11 +2869,7 @@ export const GRAPH_NODES = [
       "politics",
       "ancient",
       "feizi"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-buddha",
@@ -3525,11 +2889,7 @@ export const GRAPH_NODES = [
       "siddhartha",
       "gautama",
       "buddha"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-shankara",
@@ -3546,11 +2906,7 @@ export const GRAPH_NODES = [
       "indian",
       "metaphysics",
       "shankara"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-al-kindi",
@@ -3566,11 +2922,7 @@ export const GRAPH_NODES = [
       "falsafa",
       "islamic",
       "al-kindi"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-al-farabi",
@@ -3588,11 +2940,7 @@ export const GRAPH_NODES = [
       "politics",
       "al-farabi",
       "alpharabius"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-ibn-sina",
@@ -3610,11 +2958,7 @@ export const GRAPH_NODES = [
       "persian",
       "sina",
       "avicenna"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-al-ghazali",
@@ -3631,11 +2975,7 @@ export const GRAPH_NODES = [
       "islamic",
       "persian",
       "al-ghazali"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-anselm",
@@ -3650,11 +2990,7 @@ export const GRAPH_NODES = [
       "theology",
       "anselm",
       "canterbury"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-erasmus",
@@ -3670,11 +3006,7 @@ export const GRAPH_NODES = [
       "dutch",
       "desiderius",
       "erasmus"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-montesquieu",
@@ -3690,11 +3022,7 @@ export const GRAPH_NODES = [
       "french",
       "politics",
       "montesquieu"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-smith",
@@ -3712,11 +3040,7 @@ export const GRAPH_NODES = [
       "scottish",
       "adam",
       "smith"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-bentham",
@@ -3734,11 +3058,7 @@ export const GRAPH_NODES = [
       "ethics",
       "jeremy",
       "bentham"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-engels",
@@ -3755,11 +3075,7 @@ export const GRAPH_NODES = [
       "politics",
       "friedrich",
       "engels"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-bergson",
@@ -3776,11 +3092,7 @@ export const GRAPH_NODES = [
       "french",
       "henri",
       "bergson"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-jaspers",
@@ -3796,11 +3108,7 @@ export const GRAPH_NODES = [
       "german",
       "karl",
       "jaspers"
-    ],
-    "x": 1140,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-benjamin",
@@ -3819,11 +3127,7 @@ export const GRAPH_NODES = [
       "jewish",
       "walter",
       "benjamin"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-frege",
@@ -3840,11 +3144,7 @@ export const GRAPH_NODES = [
       "german",
       "gottlob",
       "frege"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-kripke",
@@ -3860,11 +3160,7 @@ export const GRAPH_NODES = [
       "necessity",
       "saul",
       "kripke"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 1,
-    "radius": 4.5
+    ]
   },
   {
     "id": "place-prague",
@@ -3880,11 +3176,7 @@ export const GRAPH_NODES = [
       "patocka",
       "logic",
       "dissidence"
-    ],
-    "x": 1140,
-    "y": 50,
-    "connectionsCount": 0,
-    "radius": 4.5
+    ]
   },
   {
     "id": "idea-structuralism",
@@ -3901,11 +3193,7 @@ export const GRAPH_NODES = [
       "paris",
       "anthropology",
       "french"
-    ],
-    "x": 60,
-    "y": 780,
-    "connectionsCount": 0,
-    "radius": 4.5
+    ]
   },
   {
     "id": "thinker-malebranche",
@@ -3921,11 +3209,7 @@ export const GRAPH_NODES = [
       "french",
       "nicolas",
       "malebranche"
-    ],
-    "x": 60,
-    "y": 50,
-    "connectionsCount": 0,
-    "radius": 4.5
+    ]
   }
 ];
 
@@ -3933,82 +3217,82 @@ export const GRAPH_LINKS = [
   {
     "source": "thinker-thales",
     "target": "place-ancient-greece",
-    "label": "Greek Heritage"
+    "label": "Milesian Arche of Water"
   },
   {
     "source": "thinker-anaximander",
     "target": "place-ancient-greece",
-    "label": "Greek Heritage"
+    "label": "The Apeiron (Boundless)"
   },
   {
     "source": "thinker-pythagoras",
     "target": "place-ancient-greece",
-    "label": "Greek Heritage"
+    "label": "Samos & Croton Brotherhood"
   },
   {
     "source": "thinker-heraclitus",
     "target": "place-ancient-greece",
-    "label": "Greek Heritage"
+    "label": "Ephesian Logos & Flux"
   },
   {
     "source": "thinker-parmenides",
     "target": "place-ancient-greece",
-    "label": "Greek Heritage"
+    "label": "Eleatic Way of Truth"
   },
   {
     "source": "thinker-democritus",
     "target": "place-ancient-greece",
-    "label": "Greek Heritage"
+    "label": "Abdera Atomist Doctrine"
   },
   {
     "source": "thinker-socrates",
     "target": "place-ancient-greece",
-    "label": "Greek Heritage"
+    "label": "Athenian Agora & Dialectic"
   },
   {
     "source": "thinker-plato",
     "target": "place-ancient-greece",
-    "label": "Greek Heritage"
+    "label": "Founder of the Academy"
   },
   {
     "source": "thinker-aristotle",
     "target": "place-ancient-greece",
-    "label": "Greek Heritage"
+    "label": "Founder of the Lyceum"
   },
   {
     "source": "thinker-diogenes",
     "target": "place-ancient-greece",
-    "label": "Greek Heritage"
+    "label": "Athenian Cynic Tub"
   },
   {
     "source": "thinker-antisthenes",
     "target": "place-ancient-greece",
-    "label": "Greek Heritage"
+    "label": "Cynosarges Cynic School"
   },
   {
     "source": "thinker-pyrrho",
     "target": "place-ancient-greece",
-    "label": "Greek Heritage"
+    "label": "Elis Skeptic Ataraxia"
   },
   {
     "source": "thinker-epicurus",
     "target": "place-ancient-greece",
-    "label": "Greek Heritage"
+    "label": "Garden of Epicurus"
   },
   {
     "source": "thinker-zeno-citium",
     "target": "place-ancient-greece",
-    "label": "Greek Heritage"
+    "label": "Stoa Poikile (Painted Porch)"
   },
   {
     "source": "thinker-chrysippus",
     "target": "place-ancient-greece",
-    "label": "Greek Heritage"
+    "label": "Stoic Logic & Dialectic"
   },
   {
     "source": "thinker-thucydides",
     "target": "place-ancient-greece",
-    "label": "Greek Heritage"
+    "label": "Peloponnesian Realpolitik"
   },
   {
     "source": "idea-platonism",
@@ -4058,27 +3342,27 @@ export const GRAPH_LINKS = [
   {
     "source": "thinker-cicero",
     "target": "place-rome",
-    "label": "Roman Intellectual Life"
+    "label": "Roman Republican Rhetoric"
   },
   {
     "source": "thinker-lucretius",
     "target": "place-rome",
-    "label": "Roman Intellectual Life"
+    "label": "De Rerum Natura (Epicurean Atomism)"
   },
   {
     "source": "thinker-seneca",
     "target": "place-rome",
-    "label": "Roman Intellectual Life"
+    "label": "Stoic Senator & Tragedian"
   },
   {
     "source": "thinker-epictetus",
     "target": "place-rome",
-    "label": "Roman Intellectual Life"
+    "label": "Rome to Nicopolis Stoa"
   },
   {
     "source": "thinker-marcus-aurelius",
     "target": "place-rome",
-    "label": "Roman Intellectual Life"
+    "label": "Imperial Stoic Rule"
   },
   {
     "source": "thinker-sextus-empiricus",
@@ -4108,12 +3392,12 @@ export const GRAPH_LINKS = [
   {
     "source": "thinker-laozi",
     "target": "place-ancient-china",
-    "label": "Hundred Schools of Thought"
+    "label": "Keeper of the Zhou Archives"
   },
   {
     "source": "thinker-confucius",
     "target": "place-ancient-china",
-    "label": "Hundred Schools of Thought"
+    "label": "Lu State Rites & Morals"
   },
   {
     "source": "thinker-mozi",
@@ -4123,22 +3407,22 @@ export const GRAPH_LINKS = [
   {
     "source": "thinker-zhuangzi",
     "target": "place-ancient-china",
-    "label": "Hundred Schools of Thought"
+    "label": "Daoist Butterfly Dream"
   },
   {
     "source": "thinker-mencius",
     "target": "place-ancient-china",
-    "label": "Hundred Schools of Thought"
+    "label": "Innate Goodness of Human Nature"
   },
   {
     "source": "thinker-xunzi",
     "target": "place-ancient-china",
-    "label": "Hundred Schools of Thought"
+    "label": "Ritual & Disciplined Nature"
   },
   {
     "source": "thinker-han-feizi",
     "target": "place-ancient-china",
-    "label": "Hundred Schools of Thought"
+    "label": "Legalist Statecraft (Fa, Shu, Shi)"
   },
   {
     "source": "idea-daoism",
@@ -4433,7 +3717,7 @@ export const GRAPH_LINKS = [
   {
     "source": "thinker-bacon",
     "target": "place-oxford-cambridge",
-    "label": "British Academic Center"
+    "label": "Cambridge Scientific Method"
   },
   {
     "source": "thinker-hobbes",
@@ -4443,17 +3727,17 @@ export const GRAPH_LINKS = [
   {
     "source": "thinker-locke",
     "target": "place-oxford-cambridge",
-    "label": "British Academic Center"
+    "label": "Christ Church Epistemology"
   },
   {
     "source": "thinker-berkeley",
     "target": "place-oxford-cambridge",
-    "label": "British Academic Center"
+    "label": "Anglo-Irish Empiricist Circle"
   },
   {
     "source": "thinker-russell",
     "target": "place-oxford-cambridge",
-    "label": "British Academic Center"
+    "label": "Trinity College Mathematical Logic"
   },
   {
     "source": "thinker-bacon",
@@ -4728,27 +4012,27 @@ export const GRAPH_LINKS = [
   {
     "source": "thinker-peirce",
     "target": "place-boston-harvard",
-    "label": "Harvard Intellectual Hub"
+    "label": "Harvard Pragmatic Club"
   },
   {
     "source": "thinker-james",
     "target": "place-boston-harvard",
-    "label": "Harvard Intellectual Hub"
+    "label": "Harvard Psychology & Pragmatism"
   },
   {
     "source": "thinker-dewey",
     "target": "place-boston-harvard",
-    "label": "Harvard Intellectual Hub"
+    "label": "Columbia & American Pragmatism"
   },
   {
     "source": "thinker-quine",
     "target": "place-boston-harvard",
-    "label": "Harvard Intellectual Hub"
+    "label": "Harvard Holism & Logic"
   },
   {
     "source": "thinker-rawls",
     "target": "place-boston-harvard",
-    "label": "Harvard Intellectual Hub"
+    "label": "Harvard Justice as Fairness"
   },
   {
     "source": "thinker-peirce",
@@ -4818,47 +4102,47 @@ export const GRAPH_LINKS = [
   {
     "source": "thinker-sartre",
     "target": "place-paris",
-    "label": "Parisian Intellectual Life"
+    "label": "Café de Flore Existentialism"
   },
   {
     "source": "thinker-beauvoir",
     "target": "place-paris",
-    "label": "Parisian Intellectual Life"
+    "label": "Deux Magots Feminist Philosophy"
   },
   {
     "source": "thinker-merleau-ponty",
     "target": "place-paris",
-    "label": "Parisian Intellectual Life"
+    "label": "Collège de France Phenomenology"
   },
   {
     "source": "thinker-camus",
     "target": "place-paris",
-    "label": "Parisian Intellectual Life"
+    "label": "Combat Resistance & Absurdism"
   },
   {
     "source": "thinker-levinas",
     "target": "place-paris",
-    "label": "Parisian Intellectual Life"
+    "label": "Parisian Other & Alterity"
   },
   {
     "source": "thinker-foucault",
     "target": "place-paris",
-    "label": "Parisian Intellectual Life"
+    "label": "Collège de France Power/Knowledge"
   },
   {
     "source": "thinker-baudrillard",
     "target": "place-paris",
-    "label": "Parisian Intellectual Life"
+    "label": "Nanterre Simulacra"
   },
   {
     "source": "thinker-derrida",
     "target": "place-paris",
-    "label": "Parisian Intellectual Life"
+    "label": "ENS Deconstruction"
   },
   {
     "source": "thinker-deleuze",
     "target": "place-paris",
-    "label": "Parisian Intellectual Life"
+    "label": "Vincennes Rhizomatic Thought"
   },
   {
     "source": "thinker-sartre",
@@ -5039,6 +4323,106 @@ export const GRAPH_LINKS = [
     "source": "thinker-chalmers",
     "target": "thinker-nagel",
     "label": "Hard Problem Discourse"
+  },
+  {
+    "source": "thinker-malebranche",
+    "target": "thinker-descartes",
+    "label": "Occasionalism & Cartesian Dualism"
+  },
+  {
+    "source": "thinker-malebranche",
+    "target": "idea-rationalism",
+    "label": "Vision in God"
+  },
+  {
+    "source": "idea-structuralism",
+    "target": "idea-postmodernism",
+    "label": "Linguistic Structure & Signifiers"
+  },
+  {
+    "source": "idea-structuralism",
+    "target": "place-paris",
+    "label": "Parisian Structural Linguistics"
+  },
+  {
+    "source": "place-prague",
+    "target": "thinker-husserl",
+    "label": "Prague Phenomenological Circle"
+  },
+  {
+    "source": "place-prague",
+    "target": "idea-phenomenology",
+    "label": "Crisis of European Sciences"
+  },
+  {
+    "source": "thinker-plato",
+    "target": "idea-platonism",
+    "label": "Founder of the Academy"
+  },
+  {
+    "source": "thinker-aristotle",
+    "target": "idea-aristotelianism",
+    "label": "Founder of the Lyceum"
+  },
+  {
+    "source": "thinker-socrates",
+    "target": "idea-virtue-ethics",
+    "label": "Socratic Dialectic & Virtue"
+  },
+  {
+    "source": "thinker-seneca",
+    "target": "idea-stoicism",
+    "label": "Letters to Lucilius"
+  },
+  {
+    "source": "thinker-epictetus",
+    "target": "idea-stoicism",
+    "label": "Enchiridion & Control"
+  },
+  {
+    "source": "thinker-marcus-aurelius",
+    "target": "idea-stoicism",
+    "label": "Meditations of an Emperor"
+  },
+  {
+    "source": "thinker-zeno-citium",
+    "target": "idea-stoicism",
+    "label": "Founder of the Stoa"
+  },
+  {
+    "source": "thinker-epicurus",
+    "target": "idea-epicureanism",
+    "label": "Garden of Epicurus"
+  },
+  {
+    "source": "thinker-democritus",
+    "target": "idea-materialism",
+    "label": "Atomism & The Void"
+  },
+  {
+    "source": "thinker-laozi",
+    "target": "idea-daoism",
+    "label": "Author of the Daodejing"
+  },
+  {
+    "source": "thinker-confucius",
+    "target": "idea-confucianism",
+    "label": "The Analects"
+  },
+  {
+    "source": "thinker-buddha",
+    "target": "idea-buddhism",
+    "label": "Four Noble Truths & Dharma"
+  },
+  {
+    "source": "thinker-nagarjuna",
+    "target": "idea-buddhism",
+    "label": "Madhyamaka Sunyata"
+  },
+  {
+    "source": "thinker-diogenes",
+    "target": "idea-cynicism",
+    "label": "Cynic Autonomy & Parrhesia"
   }
 ];
 
