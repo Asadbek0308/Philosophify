@@ -44,7 +44,14 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-black/95 text-white border-b border-white/15 transition-all">
+    <header
+      className="sticky top-0 z-50 backdrop-blur-md border-b transition-all"
+      style={{
+        backgroundColor: 'var(--theme-surface)',
+        color: 'var(--theme-text)',
+        borderColor: 'var(--theme-border)',
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="navbar min-h-20 px-0 flex justify-between">
           
@@ -54,14 +61,26 @@ export default function Header() {
               to="/"
               className="flex items-center gap-3 group focus:outline-none"
             >
-              <div className="w-10 h-10 rounded-xl bg-white text-black font-black flex items-center justify-center text-xl transition-transform group-hover:scale-105 duration-200">
+              <div
+                className="w-10 h-10 rounded-xl font-black flex items-center justify-center text-xl transition-transform group-hover:scale-105 duration-200"
+                style={{
+                  backgroundColor: 'var(--theme-accent)',
+                  color: 'var(--theme-accent-text)',
+                }}
+              >
                 <span>Φ</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold tracking-widest text-lg text-white group-hover:text-white/80 transition-colors font-serif">
+                <span
+                  className="font-extrabold tracking-widest text-lg font-serif transition-colors"
+                  style={{ color: 'var(--theme-text)' }}
+                >
                   PHILOSOPHIFY
                 </span>
-                <span className="text-[10px] font-mono tracking-widest text-white/50 uppercase">
+                <span
+                  className="text-[10px] font-mono tracking-widest uppercase"
+                  style={{ color: 'var(--theme-text-muted)' }}
+                >
                   Architecture of Thought
                 </span>
               </div>

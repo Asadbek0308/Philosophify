@@ -28,7 +28,10 @@ export default function App() {
     <ThemeProvider>
       <BrowserRouter>
         <RouteHandler />
-        <div className="flex flex-col min-h-screen bg-black text-white antialiased font-serif">
+        <div
+          className="flex flex-col min-h-screen antialiased font-serif transition-colors duration-200"
+          style={{ backgroundColor: 'var(--theme-bg)', color: 'var(--theme-text)' }}
+        >
           <Header />
           <main className="flex-grow">
             <Routes>

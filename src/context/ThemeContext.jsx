@@ -26,6 +26,7 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     const root = document.documentElement;
     root.setAttribute('data-app-theme', theme);
+    root.setAttribute('data-theme', theme === 'white' ? 'light' : 'dark');
     try {
       localStorage.setItem('philosophify_quick_theme', theme);
     } catch {
@@ -46,6 +47,10 @@ export function ThemeProvider({ children }) {
     root.style.setProperty('--theme-radius-box', currentThemeObj.radiusBox);
     root.style.setProperty('--theme-radius-btn', currentThemeObj.radiusBtn);
     root.style.setProperty('--theme-radius-badge', currentThemeObj.radiusBadge);
+
+    // Enforce directly on document body as well
+    document.body.style.backgroundColor = currentThemeObj.bg;
+    document.body.style.color = currentThemeObj.text;
   }, [theme, currentThemeObj]);
 
   return (
