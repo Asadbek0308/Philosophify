@@ -273,10 +273,16 @@ export default function Home() {
             style={{ borderColor: 'var(--theme-border)', color: 'var(--theme-text-muted)' }}
           >
             <div className="flex items-center gap-2">
-              <span
-                className="w-2 h-2 rounded-full animate-pulse"
-                style={{ backgroundColor: 'var(--theme-accent)' }}
-              />
+              <span className="relative flex h-2 w-2 shrink-0">
+                <span
+                  className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                  style={{ backgroundColor: 'var(--theme-accent)' }}
+                />
+                <span
+                  className="relative inline-flex rounded-full h-2 w-2"
+                  style={{ backgroundColor: 'var(--theme-accent)' }}
+                />
+              </span>
               <span
                 className="font-bold tracking-widest uppercase"
                 style={{ color: 'var(--theme-text)' }}
@@ -407,7 +413,7 @@ export default function Home() {
                   transformStyle: 'preserve-3d',
                 }}
               >
-                {/* HUD Header Bar */}
+                {/* HUD Header Bar with Un-clipped Beacon & Well-Padded Tag */}
                 <div
                   className="flex items-center justify-between px-4 py-3 border-b text-[11px] font-mono"
                   style={{
@@ -416,27 +422,34 @@ export default function Home() {
                     color: 'var(--theme-text-muted)',
                   }}
                 >
-                  <div className="flex items-center gap-2 truncate">
-                    <span
-                      className="w-2 h-2 rounded-full animate-ping shrink-0"
-                      style={{ backgroundColor: 'var(--theme-accent)' }}
-                    />
-                    <span className="font-bold tracking-wider truncate" style={{ color: 'var(--theme-text)' }}>
+                  <div className="flex items-center gap-2.5 truncate">
+                    <span className="relative flex h-2.5 w-2.5 shrink-0 ml-0.5">
+                      <span
+                        className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                        style={{ backgroundColor: 'var(--theme-accent)' }}
+                      />
+                      <span
+                        className="relative inline-flex rounded-full h-2.5 w-2.5"
+                        style={{ backgroundColor: 'var(--theme-accent)' }}
+                      />
+                    </span>
+                    <span className="font-bold tracking-wider truncate font-mono text-[11px]" style={{ color: 'var(--theme-text)' }}>
                       {HERO_CYBER_PHILOSOPHER.subject}
                     </span>
                   </div>
                   <span
-                    className="badge badge-xs font-mono font-bold shrink-0 ml-2"
+                    className="px-3 py-1 rounded-lg font-mono text-[10px] font-bold shrink-0 tracking-wider uppercase shadow-xs ml-2"
                     style={{
                       backgroundColor: 'var(--theme-accent)',
                       color: 'var(--theme-accent-text)',
+                      border: '1px solid var(--theme-accent)',
                     }}
                   >
                     {HERO_CYBER_PHILOSOPHER.badge}
                   </span>
                 </div>
 
-                {/* Artwork Viewport */}
+                {/* Artwork Viewport (No Dark Gradient Over Text) */}
                 <div className="relative aspect-square overflow-hidden bg-black/5 flex items-center justify-center">
                   {/* Laser Scanning Beam */}
                   <div className="scanline-beam" />
@@ -454,20 +467,43 @@ export default function Home() {
                     className="w-full h-full object-cover object-center transition-all duration-700 hover:scale-105"
                     loading="eager"
                   />
+                </div>
 
-                  {/* High-Contrast Bottom Caption */}
-                  <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent backdrop-blur-[2px] text-white space-y-1 text-left">
-                    <div className="flex items-center justify-between text-xs font-mono">
-                      <span className="font-bold text-sm font-serif text-white">{HERO_CYBER_PHILOSOPHER.title}</span>
-                      <span className="text-white/80 text-[10.5px] font-mono">{HERO_CYBER_PHILOSOPHER.epoch}</span>
-                    </div>
-                    <p className="text-[11px] text-white/90 line-clamp-2 font-light leading-relaxed">
-                      {HERO_CYBER_PHILOSOPHER.description}
-                    </p>
-                    <div className="text-[10px] font-mono text-white/70 pt-0.5 flex items-center justify-between">
-                      <span>{HERO_CYBER_PHILOSOPHER.coords}</span>
-                      <span className="font-bold text-white">{HERO_CYBER_PHILOSOPHER.metric}</span>
-                    </div>
+                {/* High-Contrast Architectural Caption Panel (Fully Theme-Responsive) */}
+                <div
+                  className="p-4 border-t space-y-2 text-left transition-colors"
+                  style={{
+                    backgroundColor: 'var(--theme-surface)',
+                    borderColor: 'var(--theme-border)',
+                    color: 'var(--theme-text)',
+                  }}
+                >
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="font-bold text-sm font-serif" style={{ color: 'var(--theme-text)' }}>
+                      {HERO_CYBER_PHILOSOPHER.title}
+                    </span>
+                    <span
+                      className="text-[10px] font-mono px-2 py-0.5 rounded-md border font-semibold"
+                      style={{
+                        backgroundColor: 'var(--theme-surface-subtle)',
+                        borderColor: 'var(--theme-border)',
+                        color: 'var(--theme-text-muted)',
+                      }}
+                    >
+                      {HERO_CYBER_PHILOSOPHER.epoch}
+                    </span>
+                  </div>
+                  <p className="text-[11.5px] leading-relaxed font-light" style={{ color: 'var(--theme-text-muted)' }}>
+                    {HERO_CYBER_PHILOSOPHER.description}
+                  </p>
+                  <div
+                    className="text-[10px] font-mono pt-2 border-t flex items-center justify-between"
+                    style={{ borderColor: 'var(--theme-border)', color: 'var(--theme-text-muted)' }}
+                  >
+                    <span>{HERO_CYBER_PHILOSOPHER.coords}</span>
+                    <span className="font-bold font-mono" style={{ color: 'var(--theme-text)' }}>
+                      {HERO_CYBER_PHILOSOPHER.metric}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -493,7 +529,7 @@ export default function Home() {
 
       {/* ====================================================================
           SCROLL-BASED ARCHITECTURAL PANORAMA: THE ACADEMY OF ATHENS
-          (Precisely Positioned Chest Hotspots & High-Contrast Inspector)
+          (White Backgrounds in Light Theme, Chest Hotspots, High Contrast)
           ==================================================================== */}
       <section
         ref={panoramaRef}
@@ -530,7 +566,7 @@ export default function Home() {
 
           {/* Panoramic Stage with Scroll Parallax */}
           <div
-            className="relative h-[380px] sm:h-[480px] rounded-3xl overflow-hidden shadow-2xl border group"
+            className="relative h-[400px] sm:h-[500px] rounded-3xl overflow-hidden shadow-2xl border group"
             style={{ borderColor: 'var(--theme-border)', backgroundColor: 'var(--theme-surface)' }}
           >
             {/* The Image with Parallax Scrub */}
@@ -544,7 +580,7 @@ export default function Home() {
             </div>
 
             {/* Dark Ambient Vignette for Painting Clarity */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/30 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-black/25 pointer-events-none" />
 
             {/* PRECISE CHEST HOTSPOT PINS */}
             <div className="absolute inset-0 pointer-events-auto">
@@ -583,58 +619,74 @@ export default function Home() {
               })}
             </div>
 
-            {/* HIGH-CONTRAST READABLE INSPECTION OVERLAY (TOP-RIGHT) */}
-            <div className="absolute top-4 right-4 sm:top-6 sm:right-6 max-w-sm w-full p-4 sm:p-5 rounded-2xl bg-black/90 text-white border border-white/20 shadow-2xl backdrop-blur-md z-30 space-y-2 text-left">
-              <div className="flex items-center justify-between border-b border-white/15 pb-2 text-[10px] font-mono">
-                <span className="text-white/60 uppercase">Chest Reticle Focus</span>
-                <span className="px-2 py-0.5 rounded-full bg-white text-black font-bold">
+            {/* HIGH-CONTRAST INSPECTION OVERLAY (Pure White in Light Theme) */}
+            <div className="athens-hud-card absolute top-4 right-4 sm:top-6 sm:right-6 max-w-sm w-full p-4 sm:p-5 rounded-2xl backdrop-blur-md z-30 space-y-2.5 text-left">
+              <div
+                className="flex items-center justify-between border-b pb-2 text-[10px] font-mono"
+                style={{ borderColor: 'var(--theme-border)' }}
+              >
+                <span className="uppercase font-semibold opacity-70">Chest Reticle Focus</span>
+                <span
+                  className="px-2.5 py-0.5 rounded-full font-mono text-[10px] font-bold"
+                  style={{
+                    backgroundColor: 'var(--theme-accent)',
+                    color: 'var(--theme-accent-text)',
+                  }}
+                >
                   {activeThinker.years}
                 </span>
               </div>
               <div>
-                <h3 className="text-base sm:text-lg font-serif font-bold text-white">
+                <h3 className="text-base sm:text-lg font-serif font-bold" style={{ color: 'var(--theme-text)' }}>
                   {activeThinker.name}
                 </h3>
-                <div className="text-xs font-mono text-white/80 font-semibold mt-0.5">
+                <div className="text-xs font-mono font-semibold mt-0.5" style={{ color: 'var(--theme-text-muted)' }}>
                   {activeThinker.thesis}
                 </div>
               </div>
-              <p className="text-xs text-white/90 leading-relaxed font-light">
+              <p className="text-xs leading-relaxed font-light" style={{ color: 'var(--theme-text)' }}>
                 {activeThinker.desc}
               </p>
-              <div className="text-[10px] font-mono text-white/60 pt-1 border-t border-white/10 flex items-center justify-between">
+              <div
+                className="text-[10px] font-mono pt-1.5 border-t flex items-center justify-between"
+                style={{ borderColor: 'var(--theme-border)', color: 'var(--theme-text-muted)' }}
+              >
                 <span>Core: {activeThinker.work}</span>
               </div>
 
-              {/* Quick Thinker Switcher Buttons */}
+              {/* Quick Thinker Switcher Buttons with Guaranteed Contrast */}
               <div className="grid grid-cols-3 gap-1.5 pt-1 font-mono text-[10px]">
-                {ATHENS_FOCAL_NODES.map((t) => (
-                  <button
-                    key={t.id}
-                    onClick={() => setActiveThinkerId(t.id)}
-                    className={`py-1 px-1.5 rounded-lg border text-center transition-all cursor-pointer ${
-                      activeThinkerId === t.id
-                        ? 'bg-white text-black font-bold border-white'
-                        : 'bg-white/10 text-white/80 border-white/20 hover:bg-white/20'
-                    }`}
-                  >
-                    {t.name.split(' ')[0]}
-                  </button>
-                ))}
+                {ATHENS_FOCAL_NODES.map((t) => {
+                  const isCurrent = activeThinkerId === t.id;
+                  return (
+                    <button
+                      key={t.id}
+                      onClick={() => setActiveThinkerId(t.id)}
+                      className="py-1 px-1.5 rounded-lg border text-center transition-all cursor-pointer font-bold"
+                      style={{
+                        backgroundColor: isCurrent ? 'var(--theme-accent)' : 'var(--theme-surface-subtle)',
+                        color: isCurrent ? 'var(--theme-accent-text)' : 'var(--theme-text-muted)',
+                        borderColor: isCurrent ? 'var(--theme-accent)' : 'var(--theme-border)',
+                      }}
+                    >
+                      {t.name.split(' ')[0]}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
-            {/* BOTTOM HIGH-CONTRAST INSCRIPTION CARD */}
-            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto max-w-lg p-4 sm:p-5 rounded-2xl bg-black/85 text-white border border-white/20 shadow-2xl backdrop-blur-md z-30 space-y-2 text-left">
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-white/80">
-                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+            {/* BOTTOM INSCRIPTION CARD (Pure White in Light Theme) */}
+            <div className="athens-hud-card absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto max-w-lg p-4 sm:p-5 rounded-2xl backdrop-blur-md z-30 space-y-2 text-left">
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider opacity-80">
+                <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--theme-accent)' }} />
                 <span>Dialectic Continuum // 60+ Master Thinkers</span>
               </div>
-              <blockquote className="text-sm sm:text-base font-serif italic text-white leading-relaxed">
+              <blockquote className="text-sm sm:text-base font-serif italic leading-relaxed" style={{ color: 'var(--theme-text)' }}>
                 “We do not think in isolation. Every thought is a continuation of a dialogue begun thousands of years ago.”
               </blockquote>
               <div className="pt-1 flex items-center justify-between">
-                <span className="text-[10px] font-mono text-white/60">Vatican Stanza della Segnatura</span>
+                <span className="text-[10px] font-mono opacity-70">Vatican Stanza della Segnatura</span>
                 <NavLink
                   to="/gallery"
                   className="hero-btn-primary px-3 py-1.5 rounded-xl font-mono text-[11px] font-bold flex items-center gap-1.5 shadow-md hover:scale-105 transition-transform cursor-pointer"
@@ -714,7 +766,7 @@ export default function Home() {
             <div className="space-y-2.5 max-w-2xl">
               <div className="flex items-center gap-2">
                 <span
-                  className="badge badge-sm font-mono font-bold border-none"
+                  className="px-3 py-0.5 rounded-md font-mono text-xs font-bold border-none"
                   style={{
                     backgroundColor: 'var(--theme-accent)',
                     color: 'var(--theme-accent-text)',
@@ -736,7 +788,7 @@ export default function Home() {
                 "{activeInquiry.query}"
               </h3>
               <div
-                className="p-3 rounded-xl relative"
+                className="p-3.5 rounded-xl relative"
                 style={{
                   backgroundColor: 'var(--theme-surface)',
                   border: '1px solid var(--theme-border)',
@@ -780,7 +832,7 @@ export default function Home() {
 
       {/* ====================================================================
           ACTIVE INSTRUMENTS APPARATUS
-          (Dense, Visually Alive Mini-Stages Replacing Hollow Empty Boxes)
+          (Dense, Visually Alive Mini-Stages with Padded Tags & Universal Contrast)
           ==================================================================== */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div
@@ -810,7 +862,7 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Module 1: Neuron Map */}
+          {/* Module 1: Knowledge Map */}
           <NavLink
             to="/map"
             className="group relative p-5 rounded-3xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 shadow-lg cursor-pointer text-left space-y-4"
@@ -844,12 +896,24 @@ export default function Home() {
               </svg>
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="badge badge-xs font-mono font-bold" style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-text)' }}>
+                <span
+                  className="px-3 py-1 rounded-md font-mono text-[10.5px] font-bold uppercase tracking-wider shadow-xs"
+                  style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-text)' }}
+                >
                   Second Brain
                 </span>
-                <span className="text-[10px] font-mono" style={{ color: 'var(--theme-text-muted)' }}>60+ Nodes</span>
+                <span
+                  className="px-2.5 py-0.5 rounded-md font-mono text-[10px] font-medium border"
+                  style={{
+                    backgroundColor: 'var(--theme-surface-subtle)',
+                    borderColor: 'var(--theme-border)',
+                    color: 'var(--theme-text-muted)',
+                  }}
+                >
+                  60+ Nodes
+                </span>
               </div>
               <h3 className="text-lg font-serif font-bold" style={{ color: 'var(--theme-text)' }}>
                 Knowledge Map
@@ -914,12 +978,24 @@ export default function Home() {
               <div className="text-[9px] font-mono text-right opacity-60">1,000 MILESTONES</div>
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="badge badge-xs font-mono font-bold" style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-text)' }}>
+                <span
+                  className="px-3 py-1 rounded-md font-mono text-[10.5px] font-bold uppercase tracking-wider shadow-xs"
+                  style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-text)' }}
+                >
                   Vertical Reel
                 </span>
-                <span className="text-[10px] font-mono" style={{ color: 'var(--theme-text-muted)' }}>2,625 Yrs</span>
+                <span
+                  className="px-2.5 py-0.5 rounded-md font-mono text-[10px] font-medium border"
+                  style={{
+                    backgroundColor: 'var(--theme-surface-subtle)',
+                    borderColor: 'var(--theme-border)',
+                    color: 'var(--theme-text-muted)',
+                  }}
+                >
+                  2,625 Yrs
+                </span>
               </div>
               <h3 className="text-lg font-serif font-bold" style={{ color: 'var(--theme-text)' }}>
                 Chronos Timeline
@@ -947,7 +1023,7 @@ export default function Home() {
             </div>
           </NavLink>
 
-          {/* Module 3: Infinite Gallery */}
+          {/* Module 3: Infinite Gallery (Shadow & Overlay Fixed for White/Black Theme) */}
           <NavLink
             to="/gallery"
             className="group relative p-5 rounded-3xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 shadow-lg cursor-pointer text-left space-y-4"
@@ -957,7 +1033,7 @@ export default function Home() {
               color: 'var(--theme-text)',
             }}
           >
-            {/* Visual Mini Gallery Artwork Stage */}
+            {/* Visual Mini Gallery Stage with Theme-Adaptive Badge */}
             <div
               className="h-28 rounded-2xl overflow-hidden relative border group-hover:scale-[1.02] transition-transform duration-300"
               style={{ borderColor: 'var(--theme-border)' }}
@@ -967,18 +1043,41 @@ export default function Home() {
                 alt="Silicon Contemplation"
                 className="w-full h-full object-cover object-top"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent p-2.5 flex flex-col justify-end text-white text-left">
-                <div className="text-[9px] font-mono uppercase tracking-wider text-white/80">CANVAS DRIFT</div>
-                <div className="text-xs font-serif font-bold leading-tight">40 Masterpieces</div>
+              <div
+                className="absolute bottom-2 left-2 right-2 px-2.5 py-1.5 rounded-xl border backdrop-blur-md flex items-center justify-between shadow-xs transition-colors"
+                style={{
+                  backgroundColor: 'var(--theme-surface)',
+                  borderColor: 'var(--theme-border)',
+                  color: 'var(--theme-text)',
+                }}
+              >
+                <span className="text-[10px] font-mono uppercase tracking-wider font-bold" style={{ color: 'var(--theme-accent)' }}>
+                  CANVAS DRIFT
+                </span>
+                <span className="text-[10px] font-serif font-bold" style={{ color: 'var(--theme-text)' }}>
+                  40 Masterpieces
+                </span>
               </div>
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="badge badge-xs font-mono font-bold" style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-text)' }}>
+                <span
+                  className="px-3 py-1 rounded-md font-mono text-[10.5px] font-bold uppercase tracking-wider shadow-xs"
+                  style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-text)' }}
+                >
                   Infinite Drift
                 </span>
-                <span className="text-[10px] font-mono" style={{ color: 'var(--theme-text-muted)' }}>2D Physics</span>
+                <span
+                  className="px-2.5 py-0.5 rounded-md font-mono text-[10px] font-medium border"
+                  style={{
+                    backgroundColor: 'var(--theme-surface-subtle)',
+                    borderColor: 'var(--theme-border)',
+                    color: 'var(--theme-text-muted)',
+                  }}
+                >
+                  2D Physics
+                </span>
               </div>
               <h3 className="text-lg font-serif font-bold" style={{ color: 'var(--theme-text)' }}>
                 Infinite Gallery
@@ -1025,7 +1124,10 @@ export default function Home() {
                 <span className="text-[9px] font-mono uppercase tracking-wider font-bold" style={{ color: 'var(--theme-accent)' }}>
                   EPISTEMIC COMPENDIA
                 </span>
-                <span className="badge badge-xs font-mono font-bold" style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-text)' }}>
+                <span
+                  className="px-2 py-0.5 rounded-md font-mono text-[9px] font-bold uppercase tracking-wider"
+                  style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-text)' }}
+                >
                   PDF / PPT
                 </span>
               </div>
@@ -1043,12 +1145,24 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="badge badge-xs font-mono font-bold" style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-text)' }}>
+                <span
+                  className="px-3 py-1 rounded-md font-mono text-[10.5px] font-bold uppercase tracking-wider shadow-xs"
+                  style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-text)' }}
+                >
                   Treatises
                 </span>
-                <span className="text-[10px] font-mono" style={{ color: 'var(--theme-text-muted)' }}>Slide Decks</span>
+                <span
+                  className="px-2.5 py-0.5 rounded-md font-mono text-[10px] font-medium border"
+                  style={{
+                    backgroundColor: 'var(--theme-surface-subtle)',
+                    borderColor: 'var(--theme-border)',
+                    color: 'var(--theme-text-muted)',
+                  }}
+                >
+                  Slide Decks
+                </span>
               </div>
               <h3 className="text-lg font-serif font-bold" style={{ color: 'var(--theme-text)' }}>
                 Dialectical Resources
