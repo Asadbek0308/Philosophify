@@ -122,7 +122,6 @@ const PERENNIAL_INQUIRIES = [
 export default function Home() {
   const [activeInquiry, setActiveInquiry] = useState(PERENNIAL_INQUIRIES[0]);
   const [activeThinkerId, setActiveThinkerId] = useState('plato');
-  const [mouseTilt, setMouseTilt] = useState({ x: 0, y: 0 });
 
   const containerRef = useRef(null);
   const heroLeftRef = useRef(null);
@@ -134,18 +133,6 @@ export default function Home() {
   const scrollPromptRef = useRef(null);
 
   const activeThinker = ATHENS_FOCAL_NODES.find((t) => t.id === activeThinkerId) || ATHENS_FOCAL_NODES[0];
-
-  // Subtle 3D mouse tilt over hero image card
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    setMouseTilt({ x: x * 8, y: -y * 8 });
-  };
-
-  const handleMouseLeave = () => {
-    setMouseTilt({ x: 0, y: 0 });
-  };
 
   // GSAP ScrollTrigger Setup
   useEffect(() => {
@@ -403,14 +390,10 @@ export default function Home() {
             {/* Right Visual Column: Pure Focal Masterpiece (Neuron Visor v2.4) */}
             <div ref={heroRightRef} className="lg:col-span-5 relative w-full max-w-md mx-auto lg:max-w-none">
               <div
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-                className="relative rounded-3xl overflow-hidden shadow-2xl transition-transform duration-200"
+                className="relative rounded-3xl overflow-hidden shadow-2xl"
                 style={{
                   backgroundColor: 'var(--theme-surface)',
                   border: '1px solid var(--theme-border)',
-                  transform: `perspective(1000px) rotateX(${mouseTilt.y}deg) rotateY(${mouseTilt.x}deg)`,
-                  transformStyle: 'preserve-3d',
                 }}
               >
                 {/* HUD Header Bar with Un-clipped Beacon & Well-Padded Tag */}
