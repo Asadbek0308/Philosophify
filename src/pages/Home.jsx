@@ -19,63 +19,45 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const HERO_ARTWORKS = {
-  socrates: {
-    id: 'socrates',
-    src: '/hero/cyber-philosopher.jpg',
-    title: 'The Augmented Dialectic',
-    subject: 'Socrates of Athens // Neural Visor v2.4',
-    epoch: '399 BC // 2026 AD',
-    description:
-      'Ancient Socratic interrogation synthesized with modern artificial neural networks. The unexamined life meets computational clarity.',
-    badge: 'Neural Sage',
-    coords: '37.9838° N, 23.7275° E',
-    metric: '142.8 MHz Dialectic Core',
-  },
-  laptop: {
-    id: 'laptop',
-    src: '/hero/philosopher-laptop.jpg',
-    title: 'Silicon Contemplation',
-    subject: 'Classical Thinker // Second Brain Node',
-    epoch: 'Circa 160 AD // Silicon Age',
-    description:
-      'The marble philosopher interrogates his digital apparatus. Over two millennia of ethical treatises rendered into an instantaneous knowledge graph.',
-    badge: 'Second Brain',
-    coords: '41.9028° N, 12.4964° E',
-    metric: '0.04ms Epistemic Latency',
-  },
-  athens: {
-    id: 'athens',
-    src: '/hero/school-of-athens.jpg',
-    title: 'The Academy of Athens',
-    subject: 'Raphael Sanzio // The Synthesis of Thought',
-    epoch: '1509–1511 AD',
-    description:
-      'Plato gestures toward eternal forms; Aristotle gestures toward empirical nature. The complete dialectic of civilization united under one vault.',
-    badge: 'Athens Fresco',
-    coords: '41.9038° N, 12.4547° E',
-    metric: '60+ Master Thinkers',
-  },
+const HERO_CYBER_PHILOSOPHER = {
+  src: '/hero/cyber-philosopher.jpg',
+  title: 'The Augmented Dialectic',
+  subject: 'SOCRATES OF ATHENS // NEURAL VISOR v2.4',
+  epoch: '399 BC // 2026 AD',
+  description:
+    'Ancient Socratic interrogation synthesized with modern artificial neural networks. The unexamined life meets computational clarity.',
+  badge: 'Cognitive Architecture',
+  coords: '37.9838° N, 23.7275° E',
+  metric: '142.8 MHz Dialectic Core',
 };
 
 const ATHENS_FOCAL_NODES = [
   {
+    id: 'plato',
     name: 'Plato of Athens',
-    thesis: 'Theory of Ideal Forms',
-    pos: 'left-[46%] top-[38%]',
-    desc: 'Gesturing upwards toward the transcendent realm of timeless, immutable truth.',
+    years: '427–348 BC',
+    thesis: 'Theory of Ideal Forms // Platonic Idealism',
+    pos: 'left-[47.2%] top-[48%]',
+    desc: 'Plato gestures upward toward the heavens, asserting that the physical world is merely a shadow of eternal, immutable metaphysical Forms.',
+    work: 'Timaeus, The Republic, Phaedo',
   },
   {
+    id: 'aristotle',
     name: 'Aristotle of Stagira',
-    thesis: 'Empirical Naturalism',
-    pos: 'left-[51%] top-[39%]',
-    desc: 'Palm horizontal toward the earth, grounding metaphysics in observed physical reality.',
+    years: '384–322 BC',
+    thesis: 'Empirical Naturalism & Immanent Form',
+    pos: 'left-[52.8%] top-[49.5%]',
+    desc: 'Aristotle holds his palm flat toward the earth, asserting that truth is grounded through sensory observation, biology, and natural taxonomy.',
+    work: 'Nicomachean Ethics, Physics, Metaphysics',
   },
   {
-    name: 'Diogenes the Cynic',
-    thesis: 'Cynic Asceticism & Freedom',
-    pos: 'left-[53%] top-[62%]',
-    desc: 'Sprawled indifferent on the marble steps, demonstrating virtue through utter detachment.',
+    id: 'diogenes',
+    name: 'Diogenes of Sinope',
+    years: 'c. 412–323 BC',
+    thesis: 'Cynic Asceticism & Radical Autonomy',
+    pos: 'left-[57.5%] top-[72%]',
+    desc: 'Reclining casually on the temple steps with his cloak and bowl, mocking abstract dogma and living in total defiance of social pretense.',
+    work: 'Living Philosophy (Diogenes Laërtius)',
   },
 ];
 
@@ -137,69 +119,28 @@ const PERENNIAL_INQUIRIES = [
   },
 ];
 
-const ANALYTICAL_MODULES = [
-  {
-    to: '/map',
-    badge: 'Neuron Graph',
-    title: 'Knowledge Map ("Second Brain")',
-    description:
-      'Interactive node network where every thinker, maxim, and paradigm is interconnected. The more connections a concept possesses, the larger its mass in the network.',
-    actionText: 'Inspect Web',
-    icon: Network,
-  },
-  {
-    to: '/timeline',
-    badge: 'Chronos Reel',
-    title: 'Chronos Timeline',
-    description:
-      'Vertical infinite chronometer with real-time velocity controls (Fast, Super, Auto-Tour), precision reticle, and 1,000 chronological milestones from 600 BC to 2026 AD.',
-    actionText: 'Scroll Reel',
-    icon: Clock,
-  },
-  {
-    to: '/resources',
-    badge: 'Treatises',
-    title: 'Dialectical Resources',
-    description:
-      'Comprehensive study materials, formatted in structured PDF and presentation PPT files for academic exploration, downloadable or viewable in an epistemic reader.',
-    actionText: 'Browse Compendia',
-    icon: BookOpen,
-  },
-  {
-    to: '/gallery',
-    badge: 'Infinite Drift',
-    title: 'Infinite Gallery',
-    description:
-      'An infinite 2D canvas of historical philosophical artworks, frescoes, and marble busts that drifts dynamically away from your cursor with distance-scaled physics.',
-    actionText: 'Explore Gallery',
-    icon: Compass,
-  },
-];
-
 export default function Home() {
   const [activeInquiry, setActiveInquiry] = useState(PERENNIAL_INQUIRIES[0]);
-  const [activeArtKey, setActiveArtKey] = useState('socrates');
+  const [activeThinkerId, setActiveThinkerId] = useState('plato');
   const [mouseTilt, setMouseTilt] = useState({ x: 0, y: 0 });
 
   const containerRef = useRef(null);
   const heroLeftRef = useRef(null);
   const heroRightRef = useRef(null);
-  const floatingCardRef = useRef(null);
   const panoramaRef = useRef(null);
   const panoramaImgRef = useRef(null);
   const dialecticRef = useRef(null);
-  const modulesRef = useRef(null);
   const maximRef = useRef(null);
   const scrollPromptRef = useRef(null);
 
-  const currentArt = HERO_ARTWORKS[activeArtKey];
+  const activeThinker = ATHENS_FOCAL_NODES.find((t) => t.id === activeThinkerId) || ATHENS_FOCAL_NODES[0];
 
-  // Mouse tilt effect over hero image card
+  // Subtle 3D mouse tilt over hero image card
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
-    setMouseTilt({ x: x * 10, y: -y * 10 });
+    setMouseTilt({ x: x * 8, y: -y * 8 });
   };
 
   const handleMouseLeave = () => {
@@ -211,10 +152,10 @@ export default function Home() {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      // 1. Hero Left/Right Parallax
+      // 1. Hero Parallax
       if (heroRightRef.current && heroLeftRef.current) {
         gsap.to(heroRightRef.current, {
-          yPercent: -15,
+          yPercent: -12,
           ease: 'none',
           scrollTrigger: {
             trigger: heroLeftRef.current,
@@ -225,21 +166,7 @@ export default function Home() {
         });
       }
 
-      if (floatingCardRef.current && heroLeftRef.current) {
-        gsap.to(floatingCardRef.current, {
-          yPercent: -40,
-          rotate: 3,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: heroLeftRef.current,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 0.9,
-          },
-        });
-      }
-
-      // 2. Hide scroll prompt on initial scroll
+      // 2. Hide scroll prompt on scroll
       if (scrollPromptRef.current) {
         gsap.to(scrollPromptRef.current, {
           opacity: 0,
@@ -257,10 +184,10 @@ export default function Home() {
       if (panoramaRef.current && panoramaImgRef.current) {
         gsap.fromTo(
           panoramaImgRef.current,
-          { scale: 1.15, yPercent: -8 },
+          { scale: 1.12, yPercent: -6 },
           {
             scale: 1.0,
-            yPercent: 8,
+            yPercent: 6,
             ease: 'none',
             scrollTrigger: {
               trigger: panoramaRef.current,
@@ -275,9 +202,9 @@ export default function Home() {
       // 4. Dialectic Stream Reveal
       if (dialecticRef.current) {
         gsap.from(dialecticRef.current, {
-          y: 50,
+          y: 40,
           opacity: 0,
-          duration: 0.85,
+          duration: 0.8,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: dialecticRef.current,
@@ -287,29 +214,12 @@ export default function Home() {
         });
       }
 
-      // 5. Analytical Modules Stagger Reveal
-      if (modulesRef.current) {
-        const cards = modulesRef.current.querySelectorAll('.module-card');
-        gsap.from(cards, {
-          y: 45,
-          opacity: 0,
-          duration: 0.75,
-          stagger: 0.12,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: modulesRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-          },
-        });
-      }
-
-      // 6. Maxim Banner Reveal
+      // 5. Maxim Banner Reveal
       if (maximRef.current) {
         gsap.from(maximRef.current, {
-          scale: 0.97,
+          scale: 0.98,
           opacity: 0,
-          duration: 0.8,
+          duration: 0.75,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: maximRef.current,
@@ -330,7 +240,7 @@ export default function Home() {
       style={{ backgroundColor: 'var(--theme-bg)', color: 'var(--theme-text)' }}
     >
       {/* ====================================================================
-          HERO SECTION: DUAL-PILLAR CYBER-CLASSICAL STAGE
+          HERO SECTION: FOCAL NEURON VISOR v2.4 STAGE
           ==================================================================== */}
       <section
         className="relative pt-12 pb-20 px-4 sm:px-6 lg:px-8 border-b overflow-hidden"
@@ -386,7 +296,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* DUAL-PILLAR HERO CONTENT & INTERACTIVE ARTWORK STAGE */}
+          {/* DUAL-PILLAR HERO CONTENT & FOCAL NEURAL VISOR MASTERPIECE */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Narrative Column (7 cols on lg) */}
             <div ref={heroLeftRef} className="lg:col-span-7 space-y-6 text-left">
@@ -484,9 +394,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Visual Column: Interactive Cyber-Classical Stage (5 cols on lg) */}
+            {/* Right Visual Column: Pure Focal Masterpiece (Neuron Visor v2.4) */}
             <div ref={heroRightRef} className="lg:col-span-5 relative w-full max-w-md mx-auto lg:max-w-none">
-              {/* 3D Tilting Card Container */}
               <div
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
@@ -513,7 +422,7 @@ export default function Home() {
                       style={{ backgroundColor: 'var(--theme-accent)' }}
                     />
                     <span className="font-bold tracking-wider truncate" style={{ color: 'var(--theme-text)' }}>
-                      {currentArt.subject}
+                      {HERO_CYBER_PHILOSOPHER.subject}
                     </span>
                   </div>
                   <span
@@ -523,7 +432,7 @@ export default function Home() {
                       color: 'var(--theme-accent-text)',
                     }}
                   >
-                    {currentArt.badge}
+                    {HERO_CYBER_PHILOSOPHER.badge}
                   </span>
                 </div>
 
@@ -540,88 +449,25 @@ export default function Home() {
 
                   {/* Artwork Image */}
                   <img
-                    src={currentArt.src}
-                    alt={currentArt.title}
-                    className="w-full h-full object-cover object-center transition-all duration-500 hover:scale-105"
+                    src={HERO_CYBER_PHILOSOPHER.src}
+                    alt={HERO_CYBER_PHILOSOPHER.title}
+                    className="w-full h-full object-cover object-center transition-all duration-700 hover:scale-105"
                     loading="eager"
                   />
 
-                  {/* Bottom Translucent Caption */}
-                  <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/85 via-black/45 to-transparent backdrop-blur-[2px] text-white space-y-1 text-left">
+                  {/* High-Contrast Bottom Caption */}
+                  <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent backdrop-blur-[2px] text-white space-y-1 text-left">
                     <div className="flex items-center justify-between text-xs font-mono">
-                      <span className="font-bold text-sm font-serif">{currentArt.title}</span>
-                      <span className="opacity-75 text-[10.5px]">{currentArt.epoch}</span>
+                      <span className="font-bold text-sm font-serif text-white">{HERO_CYBER_PHILOSOPHER.title}</span>
+                      <span className="text-white/80 text-[10.5px] font-mono">{HERO_CYBER_PHILOSOPHER.epoch}</span>
                     </div>
-                    <p className="text-[11px] opacity-90 line-clamp-2 font-light leading-relaxed">
-                      {currentArt.description}
+                    <p className="text-[11px] text-white/90 line-clamp-2 font-light leading-relaxed">
+                      {HERO_CYBER_PHILOSOPHER.description}
                     </p>
-                  </div>
-                </div>
-
-                {/* Tab Switcher at Bottom of Card */}
-                <div
-                  className="p-2 border-t grid grid-cols-3 gap-1.5 text-center text-[10px] font-mono"
-                  style={{
-                    borderColor: 'var(--theme-border)',
-                    backgroundColor: 'var(--theme-surface-subtle)',
-                  }}
-                >
-                  {Object.values(HERO_ARTWORKS).map((item) => (
-                    <button
-                      key={item.id}
-                      onClick={() => setActiveArtKey(item.id)}
-                      className="py-1.5 px-2 rounded-xl transition-all cursor-pointer font-bold truncate flex items-center justify-center gap-1"
-                      style={{
-                        backgroundColor: activeArtKey === item.id ? 'var(--theme-accent)' : 'transparent',
-                        color: activeArtKey === item.id ? 'var(--theme-accent-text)' : 'var(--theme-text-muted)',
-                        border: activeArtKey === item.id ? '1px solid var(--theme-accent)' : '1px solid transparent',
-                      }}
-                    >
-                      <span>{item.badge}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Offset Floating Parallax Badge (Silicon Thinker) */}
-              <div
-                ref={floatingCardRef}
-                onClick={() => setActiveArtKey(activeArtKey === 'laptop' ? 'socrates' : 'laptop')}
-                className="hidden sm:flex absolute -bottom-6 -left-6 p-2 rounded-2xl shadow-2xl items-center gap-3 backdrop-blur-md cursor-pointer transition-transform hover:scale-105 z-20"
-                style={{
-                  backgroundColor: 'var(--theme-surface)',
-                  border: '1px solid var(--theme-border)',
-                  maxWidth: '230px',
-                }}
-              >
-                <div
-                  className="w-12 h-12 rounded-xl overflow-hidden shrink-0 border"
-                  style={{ borderColor: 'var(--theme-border)' }}
-                >
-                  <img
-                    src="/hero/philosopher-laptop.jpg"
-                    alt="Silicon Contemplation"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="space-y-0.5 text-left truncate">
-                  <div
-                    className="text-[9.5px] font-mono uppercase tracking-wider font-bold truncate"
-                    style={{ color: 'var(--theme-accent)' }}
-                  >
-                    Second Brain Node
-                  </div>
-                  <div
-                    className="text-xs font-serif font-bold leading-tight truncate"
-                    style={{ color: 'var(--theme-text)' }}
-                  >
-                    Silicon Thinker
-                  </div>
-                  <div
-                    className="text-[9px] font-mono opacity-60"
-                    style={{ color: 'var(--theme-text-muted)' }}
-                  >
-                    0.04ms Latency
+                    <div className="text-[10px] font-mono text-white/70 pt-0.5 flex items-center justify-between">
+                      <span>{HERO_CYBER_PHILOSOPHER.coords}</span>
+                      <span className="font-bold text-white">{HERO_CYBER_PHILOSOPHER.metric}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -646,7 +492,8 @@ export default function Home() {
       </section>
 
       {/* ====================================================================
-          SCROLL-BASED ARCHITECTURAL PANORAMA: THE ATHENS ACADEMY
+          SCROLL-BASED ARCHITECTURAL PANORAMA: THE ACADEMY OF ATHENS
+          (Precisely Positioned Chest Hotspots & High-Contrast Inspector)
           ==================================================================== */}
       <section
         ref={panoramaRef}
@@ -664,7 +511,7 @@ export default function Home() {
                 className="text-xs font-mono uppercase tracking-widest block mb-1"
                 style={{ color: 'var(--theme-text-muted)' }}
               >
-                Fresco of Convergence // 1509 AD
+                Fresco of Convergence // Raphael Sanzio (1509 AD)
               </span>
               <h2
                 className="text-2xl sm:text-3xl font-serif font-bold"
@@ -677,13 +524,13 @@ export default function Home() {
               className="text-xs font-mono max-w-md"
               style={{ color: 'var(--theme-text-muted)' }}
             >
-              Raphael's masterpiece captures the eternal tension between Plato's idealism and Aristotle's empiricism under one grand vault.
+              Click or tap any philosopher pin on the fresco to inspect their foundational thesis and epistemology.
             </p>
           </div>
 
           {/* Panoramic Stage with Scroll Parallax */}
           <div
-            className="relative h-[340px] sm:h-[440px] rounded-3xl overflow-hidden shadow-2xl border group"
+            className="relative h-[380px] sm:h-[480px] rounded-3xl overflow-hidden shadow-2xl border group"
             style={{ borderColor: 'var(--theme-border)', backgroundColor: 'var(--theme-surface)' }}
           >
             {/* The Image with Parallax Scrub */}
@@ -696,56 +543,106 @@ export default function Home() {
               />
             </div>
 
-            {/* Ambient Vignette & Gradient Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/35 pointer-events-none" />
+            {/* Dark Ambient Vignette for Painting Clarity */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/30 pointer-events-none" />
 
-            {/* Interactive Thinker Hotspots */}
+            {/* PRECISE CHEST HOTSPOT PINS */}
             <div className="absolute inset-0 pointer-events-auto">
-              {ATHENS_FOCAL_NODES.map((node) => (
-                <div
-                  key={node.name}
-                  className={`absolute ${node.pos} -translate-x-1/2 -translate-y-1/2 group/pin`}
-                >
-                  <button
-                    type="button"
-                    className="relative flex items-center justify-center cursor-pointer focus:outline-none"
-                    aria-label={`Inspect ${node.name}`}
+              {ATHENS_FOCAL_NODES.map((node) => {
+                const isSelected = activeThinkerId === node.id;
+                return (
+                  <div
+                    key={node.id}
+                    className={`absolute ${node.pos} -translate-x-1/2 -translate-y-1/2 group/pin z-20`}
                   >
-                    <span className="w-3.5 h-3.5 rounded-full bg-white animate-ping opacity-75 absolute" />
-                    <span className="w-3 h-3 rounded-full bg-white text-black font-bold flex items-center justify-center text-[8px] shadow-lg border border-black/40">
-                      •
-                    </span>
-                  </button>
-
-                  {/* Tooltip on Hover */}
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 rounded-xl bg-black/90 text-white border border-white/20 shadow-2xl text-left opacity-0 group-hover/pin:opacity-100 transition-all duration-200 pointer-events-none z-30">
-                    <div className="text-[11px] font-bold font-serif">{node.name}</div>
-                    <div className="text-[9.5px] font-mono text-white/60 mb-1">{node.thesis}</div>
-                    <p className="text-[10px] leading-tight text-white/80">{node.desc}</p>
+                    <button
+                      type="button"
+                      onClick={() => setActiveThinkerId(node.id)}
+                      className="relative flex items-center justify-center cursor-pointer focus:outline-none p-2"
+                      aria-label={`Inspect ${node.name}`}
+                    >
+                      {/* Outer pulse wave */}
+                      <span
+                        className={`w-5 h-5 rounded-full animate-ping opacity-75 absolute ${
+                          isSelected ? 'bg-red-500 scale-125' : 'bg-white'
+                        }`}
+                      />
+                      {/* Center pin located right on chest */}
+                      <span
+                        className={`w-4 h-4 rounded-full font-bold flex items-center justify-center text-[9px] shadow-2xl border-2 transition-transform ${
+                          isSelected
+                            ? 'bg-red-500 text-white border-white scale-125'
+                            : 'bg-white text-black border-black/70 hover:scale-110'
+                        }`}
+                      >
+                        •
+                      </span>
+                    </button>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
-            {/* Bottom Inscription & Direct Route Jump */}
-            <div className="absolute bottom-0 inset-x-0 p-6 sm:p-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-white">
-              <div className="max-w-xl space-y-1.5 text-left">
-                <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-white/70">
-                  <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                  <span>Dialectic Continuum // 60+ Master Minds</span>
+            {/* HIGH-CONTRAST READABLE INSPECTION OVERLAY (TOP-RIGHT) */}
+            <div className="absolute top-4 right-4 sm:top-6 sm:right-6 max-w-sm w-full p-4 sm:p-5 rounded-2xl bg-black/90 text-white border border-white/20 shadow-2xl backdrop-blur-md z-30 space-y-2 text-left">
+              <div className="flex items-center justify-between border-b border-white/15 pb-2 text-[10px] font-mono">
+                <span className="text-white/60 uppercase">Chest Reticle Focus</span>
+                <span className="px-2 py-0.5 rounded-full bg-white text-black font-bold">
+                  {activeThinker.years}
+                </span>
+              </div>
+              <div>
+                <h3 className="text-base sm:text-lg font-serif font-bold text-white">
+                  {activeThinker.name}
+                </h3>
+                <div className="text-xs font-mono text-white/80 font-semibold mt-0.5">
+                  {activeThinker.thesis}
                 </div>
-                <blockquote className="text-base sm:text-lg font-serif italic text-white/95 leading-snug">
-                  “We do not think in isolation. Every thought is a continuation of a dialogue begun thousands of years ago.”
-                </blockquote>
+              </div>
+              <p className="text-xs text-white/90 leading-relaxed font-light">
+                {activeThinker.desc}
+              </p>
+              <div className="text-[10px] font-mono text-white/60 pt-1 border-t border-white/10 flex items-center justify-between">
+                <span>Core: {activeThinker.work}</span>
               </div>
 
-              <NavLink
-                to="/gallery"
-                className="hero-btn-primary shrink-0 px-4 py-2.5 rounded-xl font-mono text-xs font-bold flex items-center gap-2 shadow-xl hover:scale-105 transition-transform cursor-pointer"
-              >
-                <span>Inspect in Gallery</span>
-                <ArrowRight className="w-4 h-4 text-current" />
-              </NavLink>
+              {/* Quick Thinker Switcher Buttons */}
+              <div className="grid grid-cols-3 gap-1.5 pt-1 font-mono text-[10px]">
+                {ATHENS_FOCAL_NODES.map((t) => (
+                  <button
+                    key={t.id}
+                    onClick={() => setActiveThinkerId(t.id)}
+                    className={`py-1 px-1.5 rounded-lg border text-center transition-all cursor-pointer ${
+                      activeThinkerId === t.id
+                        ? 'bg-white text-black font-bold border-white'
+                        : 'bg-white/10 text-white/80 border-white/20 hover:bg-white/20'
+                    }`}
+                  >
+                    {t.name.split(' ')[0]}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* BOTTOM HIGH-CONTRAST INSCRIPTION CARD */}
+            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto max-w-lg p-4 sm:p-5 rounded-2xl bg-black/85 text-white border border-white/20 shadow-2xl backdrop-blur-md z-30 space-y-2 text-left">
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-white/80">
+                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                <span>Dialectic Continuum // 60+ Master Thinkers</span>
+              </div>
+              <blockquote className="text-sm sm:text-base font-serif italic text-white leading-relaxed">
+                “We do not think in isolation. Every thought is a continuation of a dialogue begun thousands of years ago.”
+              </blockquote>
+              <div className="pt-1 flex items-center justify-between">
+                <span className="text-[10px] font-mono text-white/60">Vatican Stanza della Segnatura</span>
+                <NavLink
+                  to="/gallery"
+                  className="hero-btn-primary px-3 py-1.5 rounded-xl font-mono text-[11px] font-bold flex items-center gap-1.5 shadow-md hover:scale-105 transition-transform cursor-pointer"
+                >
+                  <span>Open in Gallery</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-current" />
+                </NavLink>
+              </div>
             </div>
           </div>
         </div>
@@ -882,11 +779,12 @@ export default function Home() {
       </section>
 
       {/* ====================================================================
-          CORE INSTRUMENTS GRID (ANALYTICAL MODULES)
+          ACTIVE INSTRUMENTS APPARATUS
+          (Dense, Visually Alive Mini-Stages Replacing Hollow Empty Boxes)
           ==================================================================== */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div
-          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 border-b pb-6"
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 border-b pb-6"
           style={{ borderColor: 'var(--theme-border)' }}
         >
           <div>
@@ -900,90 +798,283 @@ export default function Home() {
               className="text-2xl sm:text-3xl font-serif font-bold"
               style={{ color: 'var(--theme-text)' }}
             >
-              Analytical Modules
+              Dialectical Apparatus
             </h2>
           </div>
           <span
             className="text-xs font-mono"
             style={{ color: 'var(--theme-text-muted)' }}
           >
-            Four interconnected lenses examining the perennial questions of existence.
+            Four interconnected perspectives examining 2,500 years of perennial inquiry.
           </span>
         </div>
 
-        <div ref={modulesRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {ANALYTICAL_MODULES.map((mod) => {
-            const Icon = mod.icon;
-            return (
-              <NavLink
-                to={mod.to}
-                key={mod.title}
-                className="module-card group relative p-8 rounded-3xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 shadow-lg cursor-pointer text-left"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Module 1: Neuron Map */}
+          <NavLink
+            to="/map"
+            className="group relative p-5 rounded-3xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 shadow-lg cursor-pointer text-left space-y-4"
+            style={{
+              backgroundColor: 'var(--theme-surface)',
+              border: '1px solid var(--theme-border)',
+              color: 'var(--theme-text)',
+            }}
+          >
+            {/* Visual Mini Neural Stage */}
+            <div
+              className="h-28 rounded-2xl overflow-hidden relative border p-2 flex items-center justify-center transition-colors"
+              style={{ backgroundColor: 'var(--theme-bg)', borderColor: 'var(--theme-border)' }}
+            >
+              <svg className="w-full h-full" viewBox="0 0 200 80">
+                <line x1="40" y1="40" x2="100" y2="25" stroke="var(--theme-border)" strokeWidth="1.5" strokeDasharray="3 3" />
+                <line x1="100" y1="25" x2="160" y2="40" stroke="var(--theme-border)" strokeWidth="1.5" strokeDasharray="3 3" />
+                <line x1="100" y1="25" x2="100" y2="62" stroke="var(--theme-accent)" strokeWidth="1.5" />
+                <line x1="40" y1="40" x2="100" y2="62" stroke="var(--theme-border)" strokeWidth="1.5" />
+                <line x1="160" y1="40" x2="100" y2="62" stroke="var(--theme-border)" strokeWidth="1.5" />
+                
+                <circle cx="40" cy="40" r="7" fill="var(--theme-surface-subtle)" stroke="var(--theme-border)" strokeWidth="1.5" />
+                <circle cx="160" cy="40" r="7" fill="var(--theme-surface-subtle)" stroke="var(--theme-border)" strokeWidth="1.5" />
+                <circle cx="100" cy="62" r="8" fill="var(--theme-surface-subtle)" stroke="var(--theme-accent)" strokeWidth="2" />
+                <circle cx="100" cy="25" r="10" fill="var(--theme-accent)" />
+                
+                <text x="100" y="28" textAnchor="middle" fill="var(--theme-accent-text)" fontSize="7" fontFamily="monospace" fontWeight="bold">Φ</text>
+                <text x="40" y="55" textAnchor="middle" fill="var(--theme-text-muted)" fontSize="7" fontFamily="monospace">Socrates</text>
+                <text x="160" y="55" textAnchor="middle" fill="var(--theme-text-muted)" fontSize="7" fontFamily="monospace">Aristotle</text>
+                <text x="100" y="74" textAnchor="middle" fill="var(--theme-text)" fontSize="7" fontFamily="monospace" fontWeight="bold">Plato</text>
+              </svg>
+            </div>
+
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <span className="badge badge-xs font-mono font-bold" style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-text)' }}>
+                  Second Brain
+                </span>
+                <span className="text-[10px] font-mono" style={{ color: 'var(--theme-text-muted)' }}>60+ Nodes</span>
+              </div>
+              <h3 className="text-lg font-serif font-bold" style={{ color: 'var(--theme-text)' }}>
+                Knowledge Map
+              </h3>
+              <p className="text-xs leading-relaxed font-light line-clamp-2" style={{ color: 'var(--theme-text-muted)' }}>
+                Interactive neural node network where philosophers, axioms, and lineages form an interconnected constellation.
+              </p>
+            </div>
+
+            <div
+              className="pt-3 border-t flex items-center justify-between text-xs font-mono transition-colors"
+              style={{ borderColor: 'var(--theme-border)', color: 'var(--theme-text-muted)' }}
+            >
+              <span>Inspect Web</span>
+              <div
+                className="w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:scale-110"
                 style={{
-                  backgroundColor: 'var(--theme-surface)',
+                  backgroundColor: 'var(--theme-surface-subtle)',
                   border: '1px solid var(--theme-border)',
                   color: 'var(--theme-text)',
                 }}
               >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div
-                      className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-sm"
-                      style={{
-                        backgroundColor: 'var(--theme-surface-subtle)',
-                        border: '1px solid var(--theme-border)',
-                        color: 'var(--theme-text)',
-                      }}
-                    >
-                      <Icon className="w-6 h-6 text-current" />
-                    </div>
-                    <span
-                      className="badge badge-sm font-mono border-none"
-                      style={{
-                        backgroundColor: 'var(--theme-surface-subtle)',
-                        color: 'var(--theme-text-muted)',
-                      }}
-                    >
-                      {mod.badge}
-                    </span>
-                  </div>
+                <ArrowRight className="w-3.5 h-3.5 text-current transform group-hover:translate-x-0.5 transition-transform" />
+              </div>
+            </div>
+          </NavLink>
 
-                  <h3
-                    className="text-xl font-serif font-bold mb-2"
-                    style={{ color: 'var(--theme-text)' }}
-                  >
-                    {mod.title}
-                  </h3>
-                  <p
-                    className="text-xs leading-relaxed font-light"
-                    style={{ color: 'var(--theme-text-muted)' }}
-                  >
-                    {mod.description}
-                  </p>
-                </div>
-
+          {/* Module 2: Chronos Reel */}
+          <NavLink
+            to="/timeline"
+            className="group relative p-5 rounded-3xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 shadow-lg cursor-pointer text-left space-y-4"
+            style={{
+              backgroundColor: 'var(--theme-surface)',
+              border: '1px solid var(--theme-border)',
+              color: 'var(--theme-text)',
+            }}
+          >
+            {/* Visual Mini Chrono Reel Stage */}
+            <div
+              className="h-28 rounded-2xl overflow-hidden relative border p-2.5 flex flex-col justify-between"
+              style={{ backgroundColor: 'var(--theme-bg)', borderColor: 'var(--theme-border)' }}
+            >
+              <div className="flex items-center justify-between text-[9px] font-mono" style={{ color: 'var(--theme-text-muted)' }}>
+                <span>VERTICAL CHRONO-TAPE</span>
+                <span className="w-1.5 h-1.5 rounded-full animate-ping" style={{ backgroundColor: 'var(--theme-accent)' }} />
+              </div>
+              <div className="space-y-1 font-mono text-center">
+                <div className="text-[9.5px] opacity-40 line-through">427 BC • Birth of Plato</div>
                 <div
-                  className="pt-6 border-t flex items-center justify-between text-xs font-mono transition-colors"
+                  className="text-xs font-bold py-1 px-2 rounded-lg border flex items-center justify-between shadow-xs"
                   style={{
-                    borderColor: 'var(--theme-border)',
-                    color: 'var(--theme-text-muted)',
+                    backgroundColor: 'var(--theme-surface)',
+                    borderColor: 'var(--theme-accent)',
+                    color: 'var(--theme-text)',
                   }}
                 >
-                  <span>{mod.actionText}</span>
-                  <div
-                    className="w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-200"
-                    style={{
-                      backgroundColor: 'var(--theme-surface-subtle)',
-                      border: '1px solid var(--theme-border)',
-                      color: 'var(--theme-text)',
-                    }}
-                  >
-                    <ArrowRight className="w-3.5 h-3.5 text-current transform group-hover:translate-x-0.5 transition-transform" />
-                  </div>
+                  <span className="font-mono text-[11px] font-bold" style={{ color: 'var(--theme-accent)' }}>▶ 399 BC</span>
+                  <span className="text-[9.5px] font-sans font-medium truncate ml-1">Trial of Socrates</span>
                 </div>
-              </NavLink>
-            );
-          })}
+                <div className="text-[9.5px] opacity-40">161 AD • Meditations</div>
+              </div>
+              <div className="text-[9px] font-mono text-right opacity-60">1,000 MILESTONES</div>
+            </div>
+
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <span className="badge badge-xs font-mono font-bold" style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-text)' }}>
+                  Vertical Reel
+                </span>
+                <span className="text-[10px] font-mono" style={{ color: 'var(--theme-text-muted)' }}>2,625 Yrs</span>
+              </div>
+              <h3 className="text-lg font-serif font-bold" style={{ color: 'var(--theme-text)' }}>
+                Chronos Timeline
+              </h3>
+              <p className="text-xs leading-relaxed font-light line-clamp-2" style={{ color: 'var(--theme-text-muted)' }}>
+                Infinite vertical chronometer with precision reticle, auto-tour playback, and 1,000 historical milestones.
+              </p>
+            </div>
+
+            <div
+              className="pt-3 border-t flex items-center justify-between text-xs font-mono transition-colors"
+              style={{ borderColor: 'var(--theme-border)', color: 'var(--theme-text-muted)' }}
+            >
+              <span>Scroll Reel</span>
+              <div
+                className="w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:scale-110"
+                style={{
+                  backgroundColor: 'var(--theme-surface-subtle)',
+                  border: '1px solid var(--theme-border)',
+                  color: 'var(--theme-text)',
+                }}
+              >
+                <ArrowRight className="w-3.5 h-3.5 text-current transform group-hover:translate-x-0.5 transition-transform" />
+              </div>
+            </div>
+          </NavLink>
+
+          {/* Module 3: Infinite Gallery */}
+          <NavLink
+            to="/gallery"
+            className="group relative p-5 rounded-3xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 shadow-lg cursor-pointer text-left space-y-4"
+            style={{
+              backgroundColor: 'var(--theme-surface)',
+              border: '1px solid var(--theme-border)',
+              color: 'var(--theme-text)',
+            }}
+          >
+            {/* Visual Mini Gallery Artwork Stage */}
+            <div
+              className="h-28 rounded-2xl overflow-hidden relative border group-hover:scale-[1.02] transition-transform duration-300"
+              style={{ borderColor: 'var(--theme-border)' }}
+            >
+              <img
+                src="/hero/philosopher-laptop.jpg"
+                alt="Silicon Contemplation"
+                className="w-full h-full object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent p-2.5 flex flex-col justify-end text-white text-left">
+                <div className="text-[9px] font-mono uppercase tracking-wider text-white/80">CANVAS DRIFT</div>
+                <div className="text-xs font-serif font-bold leading-tight">40 Masterpieces</div>
+              </div>
+            </div>
+
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <span className="badge badge-xs font-mono font-bold" style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-text)' }}>
+                  Infinite Drift
+                </span>
+                <span className="text-[10px] font-mono" style={{ color: 'var(--theme-text-muted)' }}>2D Physics</span>
+              </div>
+              <h3 className="text-lg font-serif font-bold" style={{ color: 'var(--theme-text)' }}>
+                Infinite Gallery
+              </h3>
+              <p className="text-xs leading-relaxed font-light line-clamp-2" style={{ color: 'var(--theme-text-muted)' }}>
+                Infinite 2D canvas of historical philosophical artworks and marble busts drifting dynamically with cursor physics.
+              </p>
+            </div>
+
+            <div
+              className="pt-3 border-t flex items-center justify-between text-xs font-mono transition-colors"
+              style={{ borderColor: 'var(--theme-border)', color: 'var(--theme-text-muted)' }}
+            >
+              <span>Explore Gallery</span>
+              <div
+                className="w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:scale-110"
+                style={{
+                  backgroundColor: 'var(--theme-surface-subtle)',
+                  border: '1px solid var(--theme-border)',
+                  color: 'var(--theme-text)',
+                }}
+              >
+                <ArrowRight className="w-3.5 h-3.5 text-current transform group-hover:translate-x-0.5 transition-transform" />
+              </div>
+            </div>
+          </NavLink>
+
+          {/* Module 4: Treatises (Resources) */}
+          <NavLink
+            to="/resources"
+            className="group relative p-5 rounded-3xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 shadow-lg cursor-pointer text-left space-y-4"
+            style={{
+              backgroundColor: 'var(--theme-surface)',
+              border: '1px solid var(--theme-border)',
+              color: 'var(--theme-text)',
+            }}
+          >
+            {/* Visual Mini Manuscript Document Stage */}
+            <div
+              className="h-28 rounded-2xl overflow-hidden relative border p-2.5 flex flex-col justify-between"
+              style={{ backgroundColor: 'var(--theme-bg)', borderColor: 'var(--theme-border)' }}
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-[9px] font-mono uppercase tracking-wider font-bold" style={{ color: 'var(--theme-accent)' }}>
+                  EPISTEMIC COMPENDIA
+                </span>
+                <span className="badge badge-xs font-mono font-bold" style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-text)' }}>
+                  PDF / PPT
+                </span>
+              </div>
+              <div className="border-l-2 pl-2 my-1" style={{ borderColor: 'var(--theme-accent)' }}>
+                <div className="text-[10.5px] font-serif font-bold italic truncate" style={{ color: 'var(--theme-text)' }}>
+                  ΠΕΡΙ ΦΥΣΕΩΣ (De Rerum Natura)
+                </div>
+                <div className="text-[9px] font-mono mt-0.5 opacity-70" style={{ color: 'var(--theme-text-muted)' }}>
+                  12 Curated Treatises & Slides
+                </div>
+              </div>
+              <div className="flex items-center justify-between text-[9px] font-mono" style={{ color: 'var(--theme-text-muted)' }}>
+                <span>READER READY</span>
+                <span>ACADEMIC STUDY</span>
+              </div>
+            </div>
+
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <span className="badge badge-xs font-mono font-bold" style={{ backgroundColor: 'var(--theme-accent)', color: 'var(--theme-accent-text)' }}>
+                  Treatises
+                </span>
+                <span className="text-[10px] font-mono" style={{ color: 'var(--theme-text-muted)' }}>Slide Decks</span>
+              </div>
+              <h3 className="text-lg font-serif font-bold" style={{ color: 'var(--theme-text)' }}>
+                Dialectical Resources
+              </h3>
+              <p className="text-xs leading-relaxed font-light line-clamp-2" style={{ color: 'var(--theme-text-muted)' }}>
+                Comprehensive study materials formatted in structured PDF treatises and presentation PPT slides for contemplation.
+              </p>
+            </div>
+
+            <div
+              className="pt-3 border-t flex items-center justify-between text-xs font-mono transition-colors"
+              style={{ borderColor: 'var(--theme-border)', color: 'var(--theme-text-muted)' }}
+            >
+              <span>Browse Compendia</span>
+              <div
+                className="w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:scale-110"
+                style={{
+                  backgroundColor: 'var(--theme-surface-subtle)',
+                  border: '1px solid var(--theme-border)',
+                  color: 'var(--theme-text)',
+                }}
+              >
+                <ArrowRight className="w-3.5 h-3.5 text-current transform group-hover:translate-x-0.5 transition-transform" />
+              </div>
+            </div>
+          </NavLink>
         </div>
       </section>
 
