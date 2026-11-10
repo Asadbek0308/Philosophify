@@ -169,9 +169,6 @@ const EdgeItem = React.memo(function EdgeItem({
   strokeWidth,
   opacity,
   registerLineRef,
-  onEdgePointerEnter,
-  onEdgePointerLeave,
-  linkData,
 }) {
   return (
     <line
@@ -180,9 +177,6 @@ const EdgeItem = React.memo(function EdgeItem({
       strokeWidth={strokeWidth}
       opacity={opacity}
       vectorEffect="non-scaling-stroke"
-      style={{ cursor: 'pointer' }}
-      onPointerEnter={(e) => onEdgePointerEnter(linkData, e)}
-      onPointerLeave={onEdgePointerLeave}
     />
   );
 });
@@ -264,7 +258,6 @@ export default function NeuronMap() {
 
   const [hoveredNodeId, setHoveredNodeId] = useState(null);
   const [selectedNodeId, setSelectedNodeId] = useState(null);
-  const [hoveredEdge, setHoveredEdge] = useState(null);
   const [searchTag, setSearchTag] = useState('');
   const [selectedTagChip, setSelectedTagChip] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -723,7 +716,6 @@ export default function NeuronMap() {
     const onKeyDown = (e) => {
       if (e.key === 'Escape') {
         setSelectedNodeId(null);
-        setHoveredEdge(null);
       }
     };
     window.addEventListener('keydown', onKeyDown);
@@ -909,20 +901,6 @@ export default function NeuronMap() {
       pinchStartDistRef.current = 0;
     }
   };
-
-  const handleEdgePointerEnter = useCallback((linkData, e) => {
-    setHoveredEdge({
-      source: linkData.source.label || linkData.source.id,
-      target: linkData.target.label || linkData.target.id,
-      label: linkData.label,
-      x: e.clientX,
-      y: e.clientY,
-    });
-  }, []);
-
-  const handleEdgePointerLeave = useCallback(() => {
-    setHoveredEdge(null);
-  }, []);
 
   return (
     <div
@@ -1158,9 +1136,6 @@ export default function NeuronMap() {
                     strokeWidth={strokeWidth}
                     opacity={opacity}
                     registerLineRef={registerLineRef}
-                    onEdgePointerEnter={handleEdgePointerEnter}
-                    onEdgePointerLeave={handleEdgePointerLeave}
-                    linkData={link}
                   />
                 );
               })}
@@ -1229,27 +1204,6 @@ export default function NeuronMap() {
             </g>
           </g>
         </svg>
-
-        {/* FLOATING HOVERED EDGE HUD TOOLTIP */}
-        {hoveredEdge && (
-          <div
-            className="absolute top-4 left-1/2 -translate-x-1/2 z-30 px-3.5 py-1.5 rounded-full border shadow-xl backdrop-blur-md pointer-events-none text-xs font-mono animate-fadeIn flex items-center gap-2"
-            style={{
-              backgroundColor: 'var(--theme-surface)',
-              borderColor: 'var(--theme-border)',
-              color: 'var(--theme-text)',
-            }}
-          >
-            <Link2 className="w-3.5 h-3.5" style={{ color: 'var(--theme-accent)' }} />
-            <span className="font-bold">{hoveredEdge.source}</span>
-            <span className="opacity-50">↔</span>
-            <span className="font-bold">{hoveredEdge.target}</span>
-            <span className="opacity-40">•</span>
-            <span className="italic" style={{ color: 'var(--theme-accent)' }}>
-              "{hoveredEdge.label}"
-            </span>
-          </div>
-        )}
 
         {/* FLOATING CAMERA & PHYSICS CONTROLS (Theme-Bound) */}
         <div
