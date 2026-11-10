@@ -912,22 +912,22 @@ export default function Timeline() {
           {/* Fixed center reticle */}
           <div
             aria-hidden="true"
-            className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[68px] border-y-2 border-white/60 bg-white/[0.04] pointer-events-none flex items-center justify-between px-1.5 z-10 shadow-lg"
+            className="tl-reticle absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[68px] border-y-2 border-white/60 bg-white/[0.04] pointer-events-none flex items-center justify-between px-1.5 z-10 shadow-lg"
           >
             <div className="flex items-center gap-1 text-white">
-              <div className="w-2 h-2 rotate-45 bg-white shadow-sm" />
-              <div className="w-3 h-0.5 bg-white" />
+              <div className="tl-needle w-2 h-2 rotate-45 bg-white shadow-sm" />
+              <div className="tl-needle w-3 h-0.5 bg-white" />
             </div>
             <div className="flex-1 h-px bg-white/20 mx-2" />
             <div className="flex items-center gap-1 text-white">
-              <div className="w-3 h-0.5 bg-white" />
-              <div className="w-2 h-2 rotate-45 bg-white shadow-sm" />
+              <div className="tl-needle w-3 h-0.5 bg-white" />
+              <div className="tl-needle w-2 h-2 rotate-45 bg-white shadow-sm" />
             </div>
           </div>
 
           {/* Vignette gradients */}
-          <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-zinc-950 via-zinc-950/80 to-transparent pointer-events-none z-10" />
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent pointer-events-none z-10" />
+          <div className="tl-vignette-top absolute top-0 left-0 right-0 h-16 pointer-events-none z-10" />
+          <div className="tl-vignette-bottom absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-10" />
         </div>
 
         {/* BOTTOM DOCK */}

@@ -164,7 +164,7 @@ const Tile = memo(function Tile({ item, x, y }) {
 
           {/* School of thought badge */}
           <div className="absolute top-2.5 right-2.5 z-10">
-            <span className="badge badge-xs bg-black/80 text-white border border-white/20 font-mono text-[9px] px-2 py-1 shadow-md">
+            <span className="badge badge-xs badge-img-overlay font-mono text-[9px] px-2 py-1 shadow-md">
               {item.school.split('&')[0].trim()}
             </span>
           </div>
@@ -752,7 +752,7 @@ export default function Gallery() {
                 className="max-h-[70vh] w-auto max-w-full object-contain rounded-xl shadow-2xl"
               />
               <div className="absolute top-4 left-4">
-                <span className="badge badge-sm font-mono bg-black/80 text-white border border-white/20">
+                <span className="badge badge-sm font-mono modal-era-badge">
                   {activeArtwork.era}
                 </span>
               </div>

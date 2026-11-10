@@ -174,16 +174,54 @@
   --theme-text-subtle: rgba(0, 0, 0, 0.25);
 }
 
-/* Invert outlines, buttons, and badges on hover */
+/* Global SVG icon inheritance to prevent disappearing icons on hover */
+button svg,
+.btn svg,
+a svg {
+  color: inherit;
+  stroke: currentColor;
+}
+
+/* Fix hover text overrides for all themes so icons/text never clash */
+[data-app-theme] .hover\:text-black:hover,
+[data-app-theme] .hover\:text-black:hover svg {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+[data-app-theme] .hover\:text-white:hover,
+[data-app-theme] .hover\:text-white:hover svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+[data-app-theme] .group:hover .group-hover\:text-black,
+[data-app-theme] .group:hover .group-hover\:text-black svg {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+[data-app-theme] .group:hover .group-hover\:text-white,
+[data-app-theme] .group:hover .group-hover\:text-white svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Invert outlines, buttons, and badges on hover in White theme */
 [data-app-theme="white"] .hover\:bg-white:hover,
-[data-app-theme="white"] .btn-outline:hover {
+[data-app-theme="white"] .btn-outline:hover,
+[data-app-theme="white"] .hover\:bg-white:hover svg,
+[data-app-theme="white"] .btn-outline:hover svg {
   background-color: #000000 !important;
   color: #ffffff !important;
+  stroke: #ffffff !important;
   border-color: #000000 !important;
 }
 
-[data-app-theme="white"] .hover\:text-black:hover {
+[data-app-theme="white"] .hover\:text-black:hover,
+[data-app-theme="white"] .hover\:text-black:hover svg {
   color: #ffffff !important;
+  stroke: #ffffff !important;
 }
 
 [data-app-theme="white"] .group:hover .group-hover\:bg-white {
@@ -191,8 +229,10 @@
   color: #ffffff !important;
 }
 
-[data-app-theme="white"] .group:hover .group-hover\:text-black {
+[data-app-theme="white"] .group:hover .group-hover\:text-black,
+[data-app-theme="white"] .group:hover .group-hover\:text-black svg {
   color: #ffffff !important;
+  stroke: #ffffff !important;
 }
 
 [data-app-theme="white"] .group:hover .group-hover\:text-black\/60 {
@@ -222,13 +262,90 @@
 }
 
 /* Modal backdrop in light theme */
+[data-app-theme="white"] .bg-black\/90,
 [data-app-theme="white"] .bg-black\/80 {
-  background-color: rgba(0, 0, 0, 0.4) !important;
+  background-color: rgba(0, 0, 0, 0.55) !important;
 }
 
-/* Timeline rail line in light theme */
-[data-app-theme="white"] .h-0\.5.bg-white\/20 {
-  background-color: rgba(0, 0, 0, 0.22) !important;
+/* Gallery & Modal Image Overlay Badges: High-contrast in ALL themes */
+.badge-img-overlay,
+.modal-era-badge,
+[data-app-theme="white"] .badge-img-overlay,
+[data-app-theme="white"] .modal-era-badge {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: rgba(0, 0, 0, 0.3) !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-app-theme="default"] .badge-img-overlay,
+[data-app-theme="default"] .modal-era-badge,
+[data-app-theme="deepslate"] .badge-img-overlay,
+[data-app-theme="deepslate"] .modal-era-badge,
+[data-app-theme="cyberpunk"] .badge-img-overlay,
+[data-app-theme="cyberpunk"] .modal-era-badge,
+[data-app-theme="aqua"] .badge-img-overlay,
+[data-app-theme="aqua"] .modal-era-badge,
+[data-app-theme="retro"] .badge-img-overlay,
+[data-app-theme="retro"] .modal-era-badge,
+[data-app-theme="papyrus"] .badge-img-overlay,
+[data-app-theme="papyrus"] .modal-era-badge,
+[data-app-theme="cybernetic"] .badge-img-overlay,
+[data-app-theme="cybernetic"] .modal-era-badge {
+  background-color: rgba(0, 0, 0, 0.85) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  font-weight: 600 !important;
+}
+
+/* Soft, modern shadows in white theme */
+[data-app-theme="white"] .shadow-2xl,
+[data-app-theme="white"] .shadow-xl,
+[data-app-theme="white"] .shadow-lg {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-app-theme="white"] .shadow-md,
+[data-app-theme="white"] .shadow-sm {
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-app-theme="white"] .shadow-inner {
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-app-theme="white"] .shadow-white\/10 {
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Timeline specific white theme fixes */
+.tl-vignette-top {
+  background: linear-gradient(to bottom, var(--theme-surface), transparent);
+}
+.tl-vignette-bottom {
+  background: linear-gradient(to top, var(--theme-surface), transparent);
+}
+[data-app-theme="white"] .tl-vignette-top {
+  background: linear-gradient(to bottom, #f4f4f5 15%, rgba(244, 244, 245, 0.8) 50%, transparent 100%) !important;
+}
+[data-app-theme="white"] .tl-vignette-bottom {
+  background: linear-gradient(to top, #f4f4f5 15%, rgba(244, 244, 245, 0.8) 50%, transparent 100%) !important;
+}
+[data-app-theme="white"] .tl-row:hover .tl-inner {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+[data-app-theme="white"] .tl-row[data-active="true"] .tl-inner {
+  background: rgba(0, 0, 0, 0.08) !important;
+  border-color: rgba(0, 0, 0, 0.25) !important;
+}
+[data-app-theme="white"] .tl-reticle {
+  border-color: rgba(0, 0, 0, 0.35) !important;
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+[data-app-theme="white"] .tl-needle {
+  background-color: #000000 !important;
 }
 
 /* Input placeholder and selections */
