@@ -392,3 +392,82 @@ a svg {
   background-color: #000000 !important;
   color: #ffffff !important;
 }
+
+/* ==========================================================================
+   HERMES / CYBER-CLASSICAL HERO HUD & IMAGE SCANLINE STYLES
+   ========================================================================== */
+@keyframes scanlineBeam {
+  0% {
+    top: -5%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.75;
+  }
+  80% {
+    opacity: 0.75;
+  }
+  100% {
+    top: 105%;
+    opacity: 0;
+  }
+}
+
+.scanline-beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--theme-accent), transparent);
+  box-shadow: 0 0 10px var(--theme-accent);
+  pointer-events: none;
+  animation: scanlineBeam 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Geometric corner brackets */
+.hud-bracket {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: var(--theme-accent);
+  pointer-events: none;
+  opacity: 0.8;
+}
+.hud-tl {
+  top: 6px;
+  left: 6px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+.hud-tr {
+  top: 6px;
+  right: 6px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+.hud-bl {
+  bottom: 6px;
+  left: 6px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+.hud-br {
+  bottom: 6px;
+  right: 6px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+
+/* Scroll indicator pulse */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+.animate-float-gentle {
+  animation: floatGentle 2.5s ease-in-out infinite;
+}
+
