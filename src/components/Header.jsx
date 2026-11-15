@@ -38,7 +38,7 @@ export default function Header() {
   const navLinks = [
     { to: '/', label: 'Home', icon: Home, badge: null },
     { to: '/map', label: 'Neuron Map', icon: Network, badge: 'Second Brain' },
-    { to: '/timeline', label: 'Chronos Timeline', icon: Clock, badge: '1,000 Facts' },
+    { to: '/timeline', label: 'Chronos Timeline', icon: Clock, badge: 'Quiz' },
     { to: '/gallery', label: 'Infinite Gallery', icon: Compass, badge: 'Canvas' },
     { to: '/resources', label: 'Resources', icon: BookOpen, badge: 'PDF / PPT' },
   ];
@@ -173,7 +173,7 @@ export default function Header() {
                           <Clock className="w-4 h-4" />
                           <div>
                             <div className="font-semibold font-serif">Chronos Timeline</div>
-                            <div className="text-[10px] opacity-60">1,000 Facts Across Time</div>
+                            <div className="text-[10px] opacity-60">Curated Milestones Across Time</div>
                           </div>
                         </div>
                         <span className="badge badge-xs bg-white/20 text-white border-none font-mono">

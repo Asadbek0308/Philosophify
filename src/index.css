@@ -355,35 +355,6 @@ a svg {
   box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.12) !important;
 }
 
-/* Timeline specific white theme fixes */
-.tl-vignette-top {
-  background: linear-gradient(to bottom, var(--theme-surface), transparent);
-}
-.tl-vignette-bottom {
-  background: linear-gradient(to top, var(--theme-surface), transparent);
-}
-[data-app-theme="white"] .tl-vignette-top {
-  background: linear-gradient(to bottom, #f4f4f5 15%, rgba(244, 244, 245, 0.8) 50%, transparent 100%) !important;
-}
-[data-app-theme="white"] .tl-vignette-bottom {
-  background: linear-gradient(to top, #f4f4f5 15%, rgba(244, 244, 245, 0.8) 50%, transparent 100%) !important;
-}
-[data-app-theme="white"] .tl-row:hover .tl-inner {
-  background: rgba(0, 0, 0, 0.04) !important;
-  border-color: rgba(0, 0, 0, 0.12) !important;
-}
-[data-app-theme="white"] .tl-row[data-active="true"] .tl-inner {
-  background: rgba(0, 0, 0, 0.08) !important;
-  border-color: rgba(0, 0, 0, 0.25) !important;
-}
-[data-app-theme="white"] .tl-reticle {
-  border-color: rgba(0, 0, 0, 0.35) !important;
-  background-color: rgba(0, 0, 0, 0.03) !important;
-}
-[data-app-theme="white"] .tl-needle {
-  background-color: #000000 !important;
-}
-
 /* Input placeholder and selections */
 [data-app-theme="white"] input::placeholder {
   color: rgba(0, 0, 0, 0.4) !important;
@@ -511,4 +482,36 @@ a svg {
   display: none !important;
 }
 
+/* ==========================================================================
+   PAGE TRANSITIONS, THEME REVEAL & LOADER
+   ========================================================================== */
+.route-enter {
+  animation: routeEnter 0.38s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes routeEnter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
 
+.route-loader {
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  border: 2px solid var(--theme-border);
+  border-top-color: var(--theme-accent);
+  animation: routeSpin 0.8s linear infinite;
+}
+@keyframes routeSpin { to { transform: rotate(360deg); } }
+
+/* Circular theme reveal (ThemeContext animates the clip-path) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) { z-index: 2; }
+::view-transition-old(root) { z-index: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .route-enter, .route-loader { animation: none !important; }
+}

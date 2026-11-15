@@ -33,6 +33,8 @@ const FLING_DECAY = 3.2; // how quickly release momentum fades (per second)
 const MAX_FLING = 4000; // px/sec cap on release momentum
 const DRAG_THRESHOLD = 5; // px of movement before a press becomes a drag
 const CARD_IMG_W = 500; // thumbnail width requested for cards (modal stays full-res)
+const ZOOM_IN_MS = 440; // card → lightbox zoom
+const ZOOM_OUT_MS = 300; // lightbox → card zoom
 
 // =========================================================
 // HELPERS
@@ -118,6 +120,19 @@ function onImgError(e, sources) {
   }
   img.style.display = 'none';
   img.parentElement?.classList.add('bg-zinc-900');
+}
+
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
+// FLIP transform that maps the lightbox panel onto the card it came from
+function flipFrom(origin, panel) {
+  const to = panel.getBoundingClientRect();
+  if (!to.width || !to.height) return null;
+  const dx = origin.left + origin.width / 2 - (to.left + to.width / 2);
+  const dy = origin.top + origin.height / 2 - (to.top + to.height / 2);
+  return `translate(${dx}px, ${dy}px) scale(${origin.width / to.width}, ${origin.height / to.height})`;
 }
 
 const reveal = (e) => {
@@ -228,6 +243,10 @@ export default function Gallery() {
   const modalOpenRef = useRef(false);
   const pausedRef = useRef(false);
   const speedRef = useRef(1);
+  const originRectRef = useRef(null); // card the lightbox zooms out of
+  const panelRef = useRef(null);
+  const backdropRef = useRef(null);
+  const closingRef = useRef(false);
 
   // React state — only things that change what is mounted or styled
   const [range, setRange] = useState(() => computeRange(0, 0, 1200, 800));
@@ -293,8 +312,10 @@ export default function Gallery() {
     targetRef.current = { vx: -Math.cos(angle) * speed, vy: -Math.sin(angle) * speed };
   }, []);
 
-  const openArtwork = useCallback((item) => {
+  const openArtwork = useCallback((item, cardEl = null) => {
     modalOpenRef.current = true;
+    closingRef.current = false;
+    originRectRef.current = cardEl ? cardEl.getBoundingClientRect() : null;
     dragRef.current = null;
     targetRef.current = { vx: 0, vy: 0 };
     velRef.current = { vx: 0, vy: 0 };
@@ -303,9 +324,49 @@ export default function Gallery() {
   }, []);
 
   const closeArtwork = useCallback(() => {
-    modalOpenRef.current = false;
-    setActiveArtwork(null);
+    if (closingRef.current) return;
+    const finish = () => {
+      closingRef.current = false;
+      modalOpenRef.current = false;
+      setActiveArtwork(null);
+    };
+    const panel = panelRef.current;
+    const origin = originRectRef.current;
+    const transform = panel && origin && !prefersReducedMotion() ? flipFrom(origin, panel) : null;
+    if (!transform || !panel.animate) {
+      finish();
+      return;
+    }
+    // Shrink back into the card it came from (the camera is frozen while open)
+    closingRef.current = true;
+    backdropRef.current?.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ZOOM_OUT_MS, fill: 'forwards' });
+    panel
+      .animate(
+        [
+          { transform: 'none', opacity: 1 },
+          { transform, opacity: 0.4 },
+        ],
+        { duration: ZOOM_OUT_MS, easing: 'cubic-bezier(.4,0,.6,1)', fill: 'forwards' }
+      )
+      .finished.then(finish, finish);
   }, []);
+
+  // Zoom the lightbox out of the clicked card (FLIP)
+  useLayoutEffect(() => {
+    if (!activeArtwork) return;
+    const panel = panelRef.current;
+    const origin = originRectRef.current;
+    if (!panel || !origin || !panel.animate || prefersReducedMotion()) return;
+    const transform = flipFrom(origin, panel);
+    if (!transform) return;
+    panel.animate(
+      [
+        { transform, opacity: 0.4, transformOrigin: 'center' },
+        { transform: 'none', opacity: 1, transformOrigin: 'center' },
+      ],
+      { duration: ZOOM_IN_MS, easing: 'cubic-bezier(.2,.8,.2,1)' }
+    );
+  }, [activeArtwork]);
 
   // ---------------------------------------------------------
   // THE LOOP: one rAF, direct DOM writes, React only hears about range changes
@@ -419,6 +480,7 @@ export default function Gallery() {
       startY: e.clientY,
       active: false,
       art: art ? art.dataset.art : null,
+      artEl: art,
       camX: 0,
       camY: 0,
       px: 0,
@@ -490,7 +552,7 @@ export default function Gallery() {
         // A press that never moved is a click on the card that was pressed
         const item = ARTWORK_BY_ID.get(d.art);
         if (item) {
-          openArtwork(item);
+          openArtwork(item, d.artEl);
           return;
         }
       }
@@ -731,12 +793,14 @@ export default function Gallery() {
           role="dialog"
           aria-modal="true"
           aria-label={activeArtwork.title}
+          ref={backdropRef}
           onClick={closeArtwork}
           className="gl-fade fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 sm:p-6"
         >
           <div
+            ref={panelRef}
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-4xl bg-zinc-950 border border-white/20 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh]"
+            className="w-full max-w-4xl will-change-transform bg-zinc-950 border border-white/20 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh]"
           >
             {/* Image */}
             <div className="md:w-3/5 bg-black flex items-center justify-center p-4 relative border-b md:border-b-0 md:border-r border-white/10">

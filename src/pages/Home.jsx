@@ -1,5 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef, useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
+import { TIMELINE_DATA } from '../database/timelineData';
+import { PHILOSOPHY_ARTWORKS } from '../database/galleryData';
+import { PHILOSOPHY_RESOURCES } from '../database/resourcesData';
 import {
   Network,
   Clock,
@@ -18,6 +21,83 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// ---- Real numbers, computed from the data (never hard-coded) ----
+const fmt = (n) => n.toLocaleString('en-US');
+const yearsBetween = (a, b) => (a < 0 !== b < 0 ? Math.abs(a - b) - 1 : Math.abs(a - b));
+const STATS = {
+  milestones: TIMELINE_DATA.length,
+  thinkers: new Set(TIMELINE_DATA.map((d) => d.thinker)).size,
+  artworks: PHILOSOPHY_ARTWORKS.length,
+  resources: PHILOSOPHY_RESOURCES.length,
+  years: yearsBetween(TIMELINE_DATA[0].year, TIMELINE_DATA[TIMELINE_DATA.length - 1].year),
+  mapNodes: '450+', // the Neuron Map is not imported here to keep the Home page light
+};
+
+// ---- Axiom of the day: a real quotation from the timeline, changing daily ----
+const AXIOMS = TIMELINE_DATA.filter((d) => d.axiom);
+function axiomOfTheDay(date = new Date()) {
+  const day = Math.floor(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 86400000);
+  return AXIOMS[day % AXIOMS.length];
+}
+
+// ---- Constellation: arcs linking the four instrument cards ----
+function Constellation({ cardRefs, wrapRef, hovered }) {
+  const [pts, setPts] = useState([]);
+
+  useLayoutEffect(() => {
+    const wrap = wrapRef.current;
+    if (!wrap) return undefined;
+    const measure = () => {
+      setPts(
+        cardRefs.current
+          .filter(Boolean)
+          .map((el) => ({ x: el.offsetLeft + el.offsetWidth / 2, y: el.offsetTop }))
+      );
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(wrap);
+    return () => ro.disconnect();
+  }, [cardRefs, wrapRef]);
+
+  // Only draw when the cards sit in one row (large screens)
+  if (pts.length < 2 || pts.some((p) => Math.abs(p.y - pts[0].y) > 2)) return null;
+  const top = pts[0].y;
+
+  const arcs = [];
+  for (let i = 0; i < pts.length; i++) {
+    for (let j = i + 1; j < pts.length; j++) {
+      const a = pts[i];
+      const b = pts[j];
+      const lift = Math.min(top - 6, 10 + Math.abs(b.x - a.x) * 0.06);
+      arcs.push({
+        key: `${i}-${j}`,
+        on: hovered === i || hovered === j,
+        d: `M ${a.x} ${top} Q ${(a.x + b.x) / 2} ${top - lift * 2} ${b.x} ${top}`,
+      });
+    }
+  }
+
+  return (
+    <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" aria-hidden="true">
+      <style>{`
+        .cn-arc { fill: none; stroke: var(--theme-border); stroke-width: 1.2; opacity: .7; transition: stroke .25s ease, opacity .25s ease; }
+        .cn-arc.on { stroke: var(--theme-accent); opacity: 1; stroke-width: 1.6; stroke-dasharray: 4 5; animation: cnDash .9s linear infinite; }
+        .cn-node { fill: var(--theme-surface); stroke: var(--theme-border-strong); stroke-width: 1.5; transition: fill .25s ease, r .25s ease; }
+        .cn-node.on { fill: var(--theme-accent); stroke: var(--theme-accent); }
+        @keyframes cnDash { to { stroke-dashoffset: -18; } }
+        @media (prefers-reduced-motion: reduce) { .cn-arc.on { animation: none; } }
+      `}</style>
+      {arcs.map((a) => (
+        <path key={a.key} d={a.d} className={`cn-arc ${hovered !== null && a.on ? 'on' : ''}`} />
+      ))}
+      {pts.map((p, i) => (
+        <circle key={i} cx={p.x} cy={top} r={hovered === i ? 5 : 3.5} className={`cn-node ${hovered === i ? 'on' : ''}`} />
+      ))}
+    </svg>
+  );
+}
 
 const HERO_CYBER_PHILOSOPHER = {
   src: '/hero/cyber-philosopher.jpg',
@@ -69,8 +149,8 @@ const PERENNIAL_INQUIRIES = [
     thinker: 'Marcus Aurelius & Epictetus',
     axiom: '“You have power over your mind — not outside events. Realize this, and you will find strength.”',
     school: 'Roman Stoicism',
-    epoch: '161 AD',
-    targetLink: '/timeline',
+    epoch: 'c. 175 AD',
+    targetLink: '/timeline?m=175-the-meditations-of-an-emperor',
     linkLabel: 'Trace on Chronos Reel',
   },
   {
@@ -81,7 +161,7 @@ const PERENNIAL_INQUIRIES = [
     axiom: '“Men believe themselves free only because they are conscious of their actions and ignorant of the causes.”',
     school: 'Determinism & Monism',
     epoch: '1677 AD',
-    targetLink: '/map',
+    targetLink: '/map?node=thinker-spinoza',
     linkLabel: 'Inspect Node Lineage',
   },
   {
@@ -102,8 +182,8 @@ const PERENNIAL_INQUIRIES = [
     thinker: 'Plato of Athens',
     axiom: '“The soul takes nothing with her to the other world but her education and culture.”',
     school: 'Platonism & Rationalism',
-    epoch: '380 BC',
-    targetLink: '/map',
+    epoch: 'c. 375 BC',
+    targetLink: '/map?node=thinker-plato',
     linkLabel: 'Open Second Brain Graph',
   },
   {
@@ -114,7 +194,7 @@ const PERENNIAL_INQUIRIES = [
     axiom: '“Man is born free, and everywhere he is in chains.”',
     school: 'Social Contract Theory',
     epoch: '1762 AD',
-    targetLink: '/timeline',
+    targetLink: '/timeline?m=1762-the-social-contract',
     linkLabel: 'Locate on Timeline',
   },
 ];
@@ -131,6 +211,19 @@ export default function Home() {
   const dialecticRef = useRef(null);
   const maximRef = useRef(null);
   const scrollPromptRef = useRef(null);
+  const instrumentsWrapRef = useRef(null);
+  const cardRefs = useRef([]);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const axiom = useMemo(() => axiomOfTheDay(), []);
+  const cardHover = (i) => ({
+    ref: (el) => {
+      cardRefs.current[i] = el;
+    },
+    onMouseEnter: () => setHoveredCard(i),
+    onMouseLeave: () => setHoveredCard(null),
+    onFocus: () => setHoveredCard(i),
+    onBlur: () => setHoveredCard(null),
+  });
 
   const activeThinker = ATHENS_FOCAL_NODES.find((t) => t.id === activeThinkerId) || ATHENS_FOCAL_NODES[0];
 
@@ -285,7 +378,7 @@ export default function Home() {
               <span>•</span>
               <span>LATENCY: 0.04ms</span>
               <span>•</span>
-              <span>EPOCH: 2,625 YEARS</span>
+              <span>EPOCH: {fmt(STATS.years)} YEARS</span>
             </div>
           </div>
 
@@ -316,7 +409,7 @@ export default function Home() {
                 className="text-base sm:text-lg max-w-2xl leading-relaxed font-light"
                 style={{ color: 'var(--theme-text-muted)' }}
               >
-                Synthesizing 2,500 years of human dialectic into an active, navigable cognitive graph. Interrogate perennial paradigms across 1,000 historical milestones, trace neural lineages, or wander through an infinite universe of classical art.
+                Synthesizing {fmt(STATS.years)} years of human dialectic into an active, navigable cognitive graph. Interrogate perennial paradigms across {STATS.milestones} curated milestones, trace neural lineages, or wander through an infinite universe of classical art.
               </p>
 
               {/* UNIFIED ACTION BUTTONS WITH FLAWLESS HOVER CONTRAST */}
@@ -362,25 +455,25 @@ export default function Home() {
               >
                 <div>
                   <div className="text-lg font-bold" style={{ color: 'var(--theme-text)' }}>
-                    1,000
+                    {fmt(STATS.milestones)}
                   </div>
                   <div className="text-[10px] uppercase opacity-60">Milestones</div>
                 </div>
                 <div>
                   <div className="text-lg font-bold" style={{ color: 'var(--theme-text)' }}>
-                    60+
+                    {fmt(STATS.thinkers)}
                   </div>
                   <div className="text-[10px] uppercase opacity-60">Thinkers</div>
                 </div>
                 <div>
                   <div className="text-lg font-bold" style={{ color: 'var(--theme-text)' }}>
-                    40
+                    {STATS.artworks}
                   </div>
                   <div className="text-[10px] uppercase opacity-60">Artworks</div>
                 </div>
                 <div>
                   <div className="text-lg font-bold" style={{ color: 'var(--theme-text)' }}>
-                    2,625
+                    {fmt(STATS.years)}
                   </div>
                   <div className="text-[10px] uppercase opacity-60">Years of Lore</div>
                 </div>
@@ -663,7 +756,7 @@ export default function Home() {
             <div className="athens-hud-card absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto max-w-lg p-4 sm:p-5 rounded-2xl backdrop-blur-md z-30 space-y-2 text-left">
               <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider opacity-80">
                 <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--theme-accent)' }} />
-                <span>Dialectic Continuum // 60+ Master Thinkers</span>
+                <span>Dialectic Continuum // {STATS.thinkers} Thinkers</span>
               </div>
               <blockquote className="text-sm sm:text-base font-serif italic leading-relaxed" style={{ color: 'var(--theme-text)' }}>
                 “We do not think in isolation. Every thought is a continuation of a dialogue begun thousands of years ago.”
@@ -844,10 +937,13 @@ export default function Home() {
           </span>
         </div>
 
+        <div ref={instrumentsWrapRef} className="relative lg:pt-12">
+          <Constellation cardRefs={cardRefs} wrapRef={instrumentsWrapRef} hovered={hoveredCard} />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Module 1: Knowledge Map */}
           <NavLink
             to="/map"
+            {...cardHover(0)}
             className="group relative p-5 rounded-3xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 shadow-lg cursor-pointer text-left space-y-4"
             style={{
               backgroundColor: 'var(--theme-surface)',
@@ -895,7 +991,7 @@ export default function Home() {
                     color: 'var(--theme-text-muted)',
                   }}
                 >
-                  60+ Nodes
+                  {STATS.mapNodes} Nodes
                 </span>
               </div>
               <h3 className="text-lg font-serif font-bold" style={{ color: 'var(--theme-text)' }}>
@@ -927,6 +1023,7 @@ export default function Home() {
           {/* Module 2: Chronos Reel */}
           <NavLink
             to="/timeline"
+            {...cardHover(1)}
             className="group relative p-5 rounded-3xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 shadow-lg cursor-pointer text-left space-y-4"
             style={{
               backgroundColor: 'var(--theme-surface)',
@@ -956,9 +1053,9 @@ export default function Home() {
                   <span className="font-mono text-[11px] font-bold" style={{ color: 'var(--theme-accent)' }}>▶ 399 BC</span>
                   <span className="text-[9.5px] font-sans font-medium truncate ml-1">Trial of Socrates</span>
                 </div>
-                <div className="text-[9.5px] opacity-40">161 AD • Meditations</div>
+                <div className="text-[9.5px] opacity-40">c. 175 AD • Meditations</div>
               </div>
-              <div className="text-[9px] font-mono text-right opacity-60">1,000 MILESTONES</div>
+              <div className="text-[9px] font-mono text-right opacity-60">{STATS.milestones} MILESTONES</div>
             </div>
 
             <div className="space-y-2">
@@ -977,14 +1074,14 @@ export default function Home() {
                     color: 'var(--theme-text-muted)',
                   }}
                 >
-                  2,625 Yrs
+                  {fmt(STATS.years)} Yrs
                 </span>
               </div>
               <h3 className="text-lg font-serif font-bold" style={{ color: 'var(--theme-text)' }}>
                 Chronos Timeline
               </h3>
               <p className="text-xs leading-relaxed font-light line-clamp-2" style={{ color: 'var(--theme-text-muted)' }}>
-                Infinite vertical chronometer with precision reticle, auto-tour playback, and 1,000 historical milestones.
+                Infinite vertical chronometer with precision reticle, auto-tour playback, a year-guessing quiz and {STATS.milestones} curated milestones.
               </p>
             </div>
 
@@ -1009,6 +1106,7 @@ export default function Home() {
           {/* Module 3: Infinite Gallery (Shadow & Overlay Fixed for White/Black Theme) */}
           <NavLink
             to="/gallery"
+            {...cardHover(2)}
             className="group relative p-5 rounded-3xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 shadow-lg cursor-pointer text-left space-y-4"
             style={{
               backgroundColor: 'var(--theme-surface)',
@@ -1038,7 +1136,7 @@ export default function Home() {
                   CANVAS DRIFT
                 </span>
                 <span className="text-[10px] font-serif font-bold" style={{ color: 'var(--theme-text)' }}>
-                  40 Masterpieces
+                  {STATS.artworks} Masterpieces
                 </span>
               </div>
             </div>
@@ -1091,6 +1189,7 @@ export default function Home() {
           {/* Module 4: Treatises (Resources) */}
           <NavLink
             to="/resources"
+            {...cardHover(3)}
             className="group relative p-5 rounded-3xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 shadow-lg cursor-pointer text-left space-y-4"
             style={{
               backgroundColor: 'var(--theme-surface)',
@@ -1119,7 +1218,7 @@ export default function Home() {
                   ΠΕΡΙ ΦΥΣΕΩΣ (De Rerum Natura)
                 </div>
                 <div className="text-[9px] font-mono mt-0.5 opacity-70" style={{ color: 'var(--theme-text-muted)' }}>
-                  12 Curated Treatises & Slides
+                  {STATS.resources} Curated Treatises & Slides
                 </div>
               </div>
               <div className="flex items-center justify-between text-[9px] font-mono" style={{ color: 'var(--theme-text-muted)' }}>
@@ -1173,6 +1272,7 @@ export default function Home() {
             </div>
           </NavLink>
         </div>
+        </div>
       </section>
 
       {/* ====================================================================
@@ -1195,17 +1295,24 @@ export default function Home() {
             <span>Axiom of the Day</span>
           </span>
           <blockquote
-            className="text-xl sm:text-3xl font-serif italic leading-relaxed"
+            className="text-xl sm:text-3xl font-serif italic leading-relaxed text-balance"
             style={{ color: 'var(--theme-text)' }}
           >
-            “He who has a why to live can bear almost any how.”
+            {axiom.axiom}
           </blockquote>
           <div
             className="text-xs font-mono"
             style={{ color: 'var(--theme-text-muted)' }}
           >
-            — Friedrich Nietzsche • <span className="opacity-75">Twilight of the Idols (1889)</span>
+            — {axiom.thinker} • <span className="opacity-75">{axiom.title} ({axiom.yearDisplay})</span>
           </div>
+          <NavLink
+            to={`/timeline?m=${axiom.id}`}
+            className="hero-btn-secondary inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-mono text-[11px] font-bold"
+          >
+            <span>Read it on the timeline</span>
+            <ArrowRight className="w-3.5 h-3.5 text-current" />
+          </NavLink>
         </div>
       </section>
     </div>
